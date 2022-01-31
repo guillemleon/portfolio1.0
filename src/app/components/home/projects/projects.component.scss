@@ -1,0 +1,103 @@
+.projectsContainer {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.projectsContent {
+  width: 1140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap
+}
+
+.projectsTitle {
+  font-size: 50px;
+  font-family: Raleway-extraBold;
+  padding: 0 128px;
+  color: white;
+  margin: 0 0 64px 0;
+}
+
+.projectElement {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  padding: 32px 32px;
+}
+
+.projectElementLeft {
+  @extend .projectElement;
+  justify-content: flex-start;
+}
+
+.projectElementRight {
+  @extend .projectElement;
+  justify-content: flex-end;
+}
+
+.projectLogo {
+  width: 180px;
+  height: 90%;
+  overflow: hidden;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 3px 5px rgb(0 0 0 / 30%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all .3s ease-in-out;
+  cursor: pointer;
+  transform-style: preserve-3d;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.projectLogoBack {
+  width: 180px;
+  height: 90%;
+  overflow: hidden;
+  border-radius: 50%;
+  background-color: rgba(0, 255, 125, 0.5);
+  box-shadow: 0 3px 5px rgb(0 0 0 / 30%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all .3s ease-in-out;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  rotate: y 180deg;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.logoKeolis {
+  width: 80%;
+}
+
+.logoPI {
+  width: 80%;
+}
+
+.logoEatkube {
+  height: 40%;
+}
+
+.logoFlykube {
+  width: 80%;
+}
+
+.textRight {
+  display: flex;
+  max-width: 500px;
+  padding-left: 32px;
+  overflow: hidden;
+}

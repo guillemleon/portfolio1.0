@@ -1,7 +1,7 @@
-<section [className]="'homeContainer'">
-  <div [className]="'bg'"></div>
-  <div [className]="'bg bg2'"></div>
-  <div [className]="'bg bg3'"></div>
+<section id="home" [className]="'homeContainer'">
+  <div id="bg1" [className]="'bg'"></div>
+  <div id="bg2" [className]="'bg2'"></div>
+  <div id="bg3" [className]="'bg3'"></div>
   <div [className]="'coverContainer'">
     <div [className]="'cardBackground'">
       <div [className]="'profileContainer'">
@@ -17,5 +17,7 @@
     </div>
   </div>
   <app-about></app-about>
+  <app-skills></app-skills>
+  <app-projects></app-projects>
 </section>
 <router-outlet></router-outlet>

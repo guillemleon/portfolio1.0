@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  bgColor1: boolean = true;
+  bgColor2: boolean = true;
+  bgColor3: boolean = true;
+
+  constructor() {
+  }
+
+  @HostListener("window:scroll", [])
+  doSomethingOnInternalScroll($event:Event){
+    let scrollOffset = window.scrollY;
+  }
 
   ngOnInit(): void {
+
   }
 
 }

@@ -27,11 +27,13 @@ body {
 }
 
 .bg2 {
+  @extend .bg;
   animation-direction:alternate-reverse;
   animation-duration:8s;
 }
 
 .bg3 {
+  @extend .bg;
   animation-duration:10s;
 }
 
