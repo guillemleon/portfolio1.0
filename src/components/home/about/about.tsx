@@ -18,6 +18,7 @@ const About:React.FC<RenderProps> = (pageContext) => {
 
     useEffect(() => {
         if(typeof window !== undefined) {
+            const about = typeof window !== "undefined" && document.getElementById("about");
             if(about && window.scrollY >= about.offsetTop - 500) loadInitialAnimationState()
         }
         window.addEventListener('scroll', () => {

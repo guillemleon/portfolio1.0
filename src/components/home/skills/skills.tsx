@@ -8,9 +8,7 @@ const About:React.FC<RenderProps> = (pageContext) => {
 
     const animatedElements = {
         title: useRef(null),
-        selector1: useRef(null),
-        selector2: useRef(null),
-        selector3: useRef(null),
+        selectors: useRef(null),
         allGroupSkills: useRef(null),
     };
     const skillsDataInitial = [
@@ -70,15 +68,24 @@ const About:React.FC<RenderProps> = (pageContext) => {
     const [currentSkillGroupName, setCurrentSkillGroupName] = useState(skillsData[0].group)
 
     useEffect(() => {
-        loadInitialAnimationState()
+        if(typeof window !== undefined) {
+            const skills = typeof window !== "undefined" && document.getElementById("skills");
+            if(skills && window.scrollY >= skills.offsetTop - 500) loadInitialAnimationState()
+        }
+        window.addEventListener('scroll', () => {
+            if(typeof window !== undefined) {
+                const skills = typeof window !== "undefined" && document.getElementById("skills");
+                if(skills && window.scrollY >= skills.offsetTop - 500) loadInitialAnimationState()
+            }
+        })
     })
 
     return (
         <section id="skills" className={styles.container}>
             <div className={styles.content}>
-                <h1 className={styles.title}>MY SKILLS</h1>
+                <h1 className={styles.title} ref={animatedElements.title}>MY SKILLS</h1>
                 <div className={styles.skillsData}>
-                    <div className={styles.selectorsContainer}>
+                    <div className={styles.selectorsContainer} ref={animatedElements.selectors}>
                         {skillsData.map((skillGroup) => {
 
                             return (
@@ -94,7 +101,7 @@ const About:React.FC<RenderProps> = (pageContext) => {
 
                         })}
                     </div>
-                    <ul className={styles.skillsCollectionContainer}>
+                    <ul className={styles.skillsCollectionContainer} ref={animatedElements.allGroupSkills}>
                         <h2 className={styles.currentSkillGroupTitle}>{currentSkillGroupName}</h2>
                         {skillsList.map((skill) => {
                             return (
@@ -109,7 +116,21 @@ const About:React.FC<RenderProps> = (pageContext) => {
         </section>
     )
 
-    function loadInitialAnimationState() {}
+    function loadInitialAnimationState() {
+        let index = 0;
+        for (const [key, value] of Object.entries(animatedElements)) {
+            if(key === "title") {
+                if(value.current) {
+                    setInterval(() => {
+                        value.current.style.transform = "translateY(0px)";
+                    }, 200 * index)
+                }
+            } else {
+                console.log(value.current.childNodes)
+            }
+            index++;
+        }
+    }
 
     function selectSkillsGroup(id: string): void {
         let skillsDataCopy = [...skillsData]

@@ -12,6 +12,7 @@
 .content {
   width: $contentWidth;
   height: 100%;
+  overflow: hidden;
 }
 
 .title {
@@ -19,12 +20,15 @@
   font-family: "Raleway-extraBold";
   color: white;
   margin: 0 0 32px 0;
+  transform: translateY(900px);
+  transition: transform .5s ease-in-out;
 }
 
 .skillsData {
   width: 100%;
   height: 100%;
   display: flex;
+  padding-top: 64px;
 }
 
 .selectorsContainer {
