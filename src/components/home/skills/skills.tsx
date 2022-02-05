@@ -126,7 +126,15 @@ const About:React.FC<RenderProps> = (pageContext) => {
                     }, 200 * index)
                 }
             } else {
-                console.log(value.current.childNodes)
+                if(value.current) {
+                    for (let i of value.current.children) {
+                        setInterval(() => {
+                            i.style.transform = "translateY(0px)";
+                        }, 200 * index)
+                        index++;
+                    }
+                    index = 0;
+                }
             }
             index++;
         }
