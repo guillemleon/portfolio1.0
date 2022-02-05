@@ -1,0 +1,83 @@
+@import "../variables.module.scss";
+
+.container {
+  width: $contentWidth;
+  height: calc(100vh - 100px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+  overflow: hidden;
+}
+
+.title {
+  color: white;
+  font-family: Raleway-extraBold;
+  font-size: 100px;
+  margin: 0;
+  display: flex;
+  white-space: pre-wrap;
+  transform: translateY(600px);
+  transition: all .5s ease-in-out;
+  overflow: hidden;
+
+}
+
+.titleGreen {
+  font-family: Raleway-extraBold;
+  font-size: 100px;
+  color: $green;
+  margin: 0;
+  transform: translateY(600px);
+  transition: all .5s ease-in-out;
+
+}
+
+.continueCircle {
+  width: 80px;
+  height: 80px;
+  background-color: $green;
+  border-radius: 50%;
+  margin: 50px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(600px);
+  transition: transform .5s ease-in-out;
+
+  &:hover {
+    background-color: $black;
+    border: 2px solid $green;
+
+    .arrow {
+      * {
+        stroke: $green;
+      }
+    }
+  }
+}
+
+.arrow {
+  svg {
+    height: 40px;
+  }
+}
+
+@include mobile {
+  .title {
+    font-size: 50px;
+  }
+  .titleGreen {
+    font-size: 50px;
+  }
+}

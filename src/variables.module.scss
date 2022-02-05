@@ -1,0 +1,36 @@
+/* Sizes */
+$mobileBreakpoint: 640px;
+$tabletBreakpoint: 1140px;
+$contentWidth: 1340px;
+
+/* Colors */
+$black: #0D0D0D;
+$green: #0CF2B1;
+$darkPurple: #8303A6;
+$mediumPurple: #AB04D9;
+$lightPurple: #AB05F2;
+
+/* Font Sizes */
+
+$bigTitle: 100px;
+$title: 50px;
+$smallTitle: 35px;
+$superSmallTitle: 25px;
+$text: 25px;
+$smallText: 16px;
+$logoFooter: 200px;
+
+/* Mixins */
+
+@mixin mobile {
+  @media (max-width: #{$mobileBreakpoint}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: #{$tabletBreakpoint}) {
+    @content;
+  }
+}
+
