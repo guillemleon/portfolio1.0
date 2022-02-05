@@ -35,7 +35,8 @@
 .skillsCollectionContainer {
   flex: 1;
   height: 100%;
-  border: 1px solid red;
+  list-style: none;
+  padding: 0;
 }
 
 .selector {
@@ -50,6 +51,7 @@
   border: none;
   outline: none;
   text-transform: uppercase;
+  font-size: 24px;
 
   &:hover {
     box-shadow: 0 0 0 10px $black, 0 0 0 15px white;
@@ -61,7 +63,6 @@
   @extend .selector;
   background-color: $lightPurple;
   color: white;
-  font-size: 24px;
   font-family: "Raleway-semiBold";
 }
 
@@ -69,7 +70,6 @@
   @extend .selector;
   background-color: $green;
   color: black;
-  font-size: 24px;
   font-family: "Raleway-semiBold";
 }
 
@@ -77,7 +77,6 @@
   @extend .selector;
   background-color: white;
   color: black;
-  font-size: 24px;
   font-family: "Raleway-semiBold";
 }
 
@@ -92,4 +91,25 @@
 .selector3selected {
   @extend .selector3;
   box-shadow: 0 0 0 10px $black, 0 0 0 15px white;
+}
+
+.currentSkillGroupTitle {
+  font-size: 32px;
+  color: $green;
+  text-transform: uppercase;
+  font-family: "Raleway-black";
+  margin-bottom: 32px;
+}
+
+.skillContainer {
+  width: 100%;
+  padding: 12px 0;
+  list-style: none;
+}
+
+.skill {
+  margin: 0;
+  color: white;
+  font-family: "Raleway-medium";
+  font-size: 20px;
 }

@@ -10,3 +10,6 @@ export const selector3: string;
 export const selector1selected: string;
 export const selector2selected: string;
 export const selector3selected: string;
+export const skill: string;
+export const skillContainer: string;
+export const currentSkillGroupTitle: string;

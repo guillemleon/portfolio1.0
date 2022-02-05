@@ -1,11 +1,18 @@
 import * as React from "react"
 import * as styles from './skills.module.scss'
-import {useEffect, useState} from "react"
+import {useEffect, useRef, useState} from "react"
 
 type RenderProps = {}
 
 const About:React.FC<RenderProps> = (pageContext) => {
 
+    const animatedElements = {
+        title: useRef(null),
+        selector1: useRef(null),
+        selector2: useRef(null),
+        selector3: useRef(null),
+        allGroupSkills: useRef(null),
+    };
     const skillsDataInitial = [
         {
             id: "skill-group-1",
@@ -59,6 +66,8 @@ const About:React.FC<RenderProps> = (pageContext) => {
         }
     ]
     const [skillsData, setSkillsData] = useState(skillsDataInitial)
+    const [skillsList, setSkillsList] = useState(skillsData[0].data)
+    const [currentSkillGroupName, setCurrentSkillGroupName] = useState(skillsData[0].group)
 
     useEffect(() => {
         loadInitialAnimationState()
@@ -85,7 +94,16 @@ const About:React.FC<RenderProps> = (pageContext) => {
 
                         })}
                     </div>
-                    <div className={styles.skillsCollectionContainer}>asdasd</div>
+                    <ul className={styles.skillsCollectionContainer}>
+                        <h2 className={styles.currentSkillGroupTitle}>{currentSkillGroupName}</h2>
+                        {skillsList.map((skill) => {
+                            return (
+                                <li className={styles.skillContainer}>
+                                    <p className={styles.skill}>{skill.name}</p>
+                                </li>
+                            )
+                        })}
+                    </ul>
                 </div>
             </div>
         </section>
@@ -97,7 +115,13 @@ const About:React.FC<RenderProps> = (pageContext) => {
         let skillsDataCopy = [...skillsData]
 
         skillsDataCopy.map((item) => {
-            (item.id === id) ? item.selected = true : item.selected = false;
+            if (item.id === id) {
+                item.selected = true
+                setSkillsList(item.data)
+                setCurrentSkillGroupName(item.group)
+            } else {
+                item.selected = false
+            }
         })
 
         setSkillsData(skillsDataCopy);

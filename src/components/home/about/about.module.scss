@@ -86,7 +86,7 @@
 }
 
 .button {
-  border: none;
+  border: 2px solid transparent;
   width: 200px;
   height: 100%;
   background-color: $green;
@@ -94,6 +94,11 @@
   cursor: pointer;
   transform: translateY(700px);
   transition: transform .5s ease-in-out;
+
+  &:hover {
+    border: 2px solid $green;
+    background-color: white;
+  }
 }
 
 @include tablet {
