@@ -6,3 +6,7 @@ export const separationLine: string;
 export const linksList: string;
 export const linkContainer: string;
 export const link: string;
+export const buttonBurgerContainer: string;
+export const buttonBurger: string;
+export const buttonBurgerOpen: string;
+export const header: string;

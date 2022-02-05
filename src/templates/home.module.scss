@@ -1,13 +1,13 @@
 @import "../variables.module.scss";
 
 .container {
-  width: 100%;
-  min-height: 650px;
+  width: $contentWidth;
+  height: calc(100vh - 100px);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: relative;
+  overflow: hidden;
 }
 
 .content {
@@ -16,6 +16,7 @@
   justify-content: center;
   align-items: center;
   margin-top: 100px;
+  overflow: hidden;
 }
 
 .title {
@@ -25,6 +26,10 @@
   margin: 0;
   display: flex;
   white-space: pre-wrap;
+  transform: translateY(600px);
+  transition: all .5s ease-in-out;
+  overflow: hidden;
+
 }
 
 .titleGreen {
@@ -32,6 +37,9 @@
   font-size: 100px;
   color: $green;
   margin: 0;
+  transform: translateY(600px);
+  transition: all .5s ease-in-out;
+
 }
 
 .continueCircle {
@@ -44,6 +52,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transform: translateY(600px);
+  transition: transform .5s ease-in-out;
 
   &:hover {
     background-color: $black;
@@ -60,5 +70,14 @@
 .arrow {
   svg {
     height: 40px;
+  }
+}
+
+@include mobile {
+  .title {
+    font-size: 50px;
+  }
+  .titleGreen {
+    font-size: 50px;
   }
 }

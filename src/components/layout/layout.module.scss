@@ -2,7 +2,6 @@
 
 .globalContainer {
   width: 100vw;
-  height: 100vh;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
@@ -13,10 +12,13 @@
 }
 
 .layoutContent {
-  width: 1140px;
+  width: 100%;
   height: 100%;
   background-color: $black;
   margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 @include mobile {

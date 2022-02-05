@@ -1,6 +1,7 @@
 /* Sizes */
-$mobileBreakpoint: 1140px;
-$contentWidth: 1140px;
+$mobileBreakpoint: 640px;
+$tabletBreakpoint: 1140px;
+$contentWidth: 1340px;
 
 /* Colors */
 $black: #0D0D0D;
@@ -26,3 +27,10 @@ $logoFooter: 200px;
     @content;
   }
 }
+
+@mixin tablet {
+  @media (max-width: #{$tabletBreakpoint}) {
+    @content;
+  }
+}
+
