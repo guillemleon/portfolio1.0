@@ -78,7 +78,7 @@ const About:React.FC<RenderProps> = (pageContext) => {
                 if(skills && window.scrollY >= skills.offsetTop - 500) loadInitialAnimationState()
             }
         })
-    })
+    }, [])
 
     return (
         <section id="skills" className={styles.container}>

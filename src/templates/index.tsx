@@ -6,6 +6,7 @@ import {ReactSVG} from "react-svg";
 import {useEffect, useRef} from "react";
 import About from "../components/home/about/about";
 import Skills from "../components/home/skills/skills";
+import Projects from "../components/home/projects/projects";
 
 type RenderProps = {}
 
@@ -39,6 +40,7 @@ const IndexPage:React.FC<RenderProps> = (pageContext) => {
             </div>
             <About />
             <Skills />
+            <Projects />
         </Layout>
     )
 
