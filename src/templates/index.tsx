@@ -30,7 +30,13 @@ const IndexPage:React.FC<RenderProps> = ({ data, pageContext }) => {
     })
 
     return (
-        <Layout header={data.datoCmsHeader}>
+        <Layout
+            header={data.datoCmsHeader}
+            lang={{
+                defaultLocale: pageContext.defaultLocale,
+                locale: pageContext.locale
+            }}
+        >
             <div className={styles.container}>
                 <div className={styles.content}  ref={coverElements.content}>
                     <h1 className={styles.title} ref={coverElements.title}>{data.datoCmsHomePage.coverTitleOne}</h1>
@@ -45,7 +51,13 @@ const IndexPage:React.FC<RenderProps> = ({ data, pageContext }) => {
             </div>
             <About data={data.datoCmsHomePage} />
             <Skills />
-            <Projects data={data.datoCmsHomePage}/>
+            <Projects
+                data={data.datoCmsHomePage}
+                lang={{
+                    defaultLocale: pageContext.defaultLocale,
+                    locale: pageContext.locale
+                }}
+            />
         </Layout>
     )
 

@@ -11,7 +11,13 @@ type RenderProps = {
 const ContactPage:React.FC<RenderProps> = ({ data, pageContext }) => {
 
     return (
-        <Layout header={data.datoCmsHeader}>
+        <Layout
+            header={data.datoCmsHeader}
+            lang={{
+                defaultLocale: pageContext.defaultLocale,
+                locale: pageContext.locale
+            }}
+        >
             <div className={styles.container}>
 
             </div>

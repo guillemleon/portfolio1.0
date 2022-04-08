@@ -4,13 +4,23 @@ import Header from "./header/header";
 import {HeaderFieldsFragment} from "../../../graphql-types";
 
 type RenderProps = {
-    header: HeaderFieldsFragment
+    header: HeaderFieldsFragment,
+    lang?: {
+        locale: string,
+        defaultLocale: string
+    }
 }
 
-const Layout: React.FC<RenderProps> = ({ header, children }) => {
+const Layout: React.FC<RenderProps> = ({ header, children, lang }) => {
     return (
         <div className={styles.globalContainer}>
-            <Header data={header} />
+            <Header
+                data={header}
+                lang={{
+                    locale: lang.locale,
+                    defaultLocale: lang.defaultLocale
+                }}
+            />
             <main id="main" className={styles.layoutContent}>
                 {children}
             </main>

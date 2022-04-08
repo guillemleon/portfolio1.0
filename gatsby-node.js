@@ -32,7 +32,8 @@ exports.createPages = async ({ graphql, actions }) => {
                 path: page.node.locale === defaultLocale ? "/" : `/${page.node.locale}`,
                 component: index,
                 context: {
-                    locale: page.node.locale
+                    locale: page.node.locale,
+                    defaultLocale
                 },
             })
         })
@@ -46,7 +47,8 @@ exports.createPages = async ({ graphql, actions }) => {
                 path: page.node.locale === defaultLocale ? "/projects" : `/${page.node.locale}/projects`,
                 component: projects,
                 context: {
-                    locale: page.node.locale
+                    locale: page.node.locale,
+                    defaultLocale
                 },
             })
         })
@@ -60,7 +62,8 @@ exports.createPages = async ({ graphql, actions }) => {
                 path: page.node.locale === defaultLocale ? "/contact" : `/${page.node.locale}/contact`,
                 component: contact,
                 context: {
-                    locale: page.node.locale
+                    locale: page.node.locale,
+                    defaultLocale
                 },
             })
         })

@@ -112,10 +112,10 @@
   font-size: $text;
 }
 
-@include mobile {
+@include tablet {
   .linkContainer {
     width: 100%;
-    height: 200px;
+    height: 300px;
     margin: 16px 0 16px 0;
 
     &:hover {
@@ -157,5 +157,15 @@
 
   .title {
     font-size: $smallTitle;
+  }
+}
+
+@include mobile {
+  .linkContainer {
+    height: 200px;
+  }
+
+  .title {
+    font-size: 26px;
   }
 }

@@ -6,10 +6,14 @@ import {graphql} from "gatsby";
 import {HeaderFieldsFragment} from "../../../../graphql-types";
 
 type RenderProps = {
-    data: HeaderFieldsFragment
+    data: HeaderFieldsFragment,
+    lang: {
+        locale: string,
+        defaultLocale: string
+    }
 }
 
-const Header: React.FC<RenderProps> = ({ data }) => {
+const Header: React.FC<RenderProps> = ({ data, lang }) => {
 
     const isTablet = useWindowWidth() < 1140;
     const [menuOpen, setMenuOpen] = useState(false);
@@ -40,7 +44,12 @@ const Header: React.FC<RenderProps> = ({ data }) => {
                     <a className={styles.link} href="#">{data.projects}</a>
                 </li>
                 <li className={styles.linkContainer}>
-                    <a className={styles.link} href="#">{data.contact}</a>
+                    <a
+                        className={styles.link}
+                        href={lang.locale === lang.defaultLocale ? "/contact" : `/${lang.locale}/contact`}
+                    >
+                        {data.contact}
+                    </a>
                 </li>
             </ul>
         )
@@ -49,7 +58,7 @@ const Header: React.FC<RenderProps> = ({ data }) => {
     function renderLogo(): JSX.Element {
         return (
             <div className={styles.logoContainer}>
-                <a href={"/"} className={styles.logo}>GL</a>
+                <a href={lang.locale === lang.defaultLocale ? "/" : `/${lang.locale}`} className={styles.logo}>GL</a>
             </div>
         )
     }

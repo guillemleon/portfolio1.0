@@ -6,10 +6,14 @@ import {ProjectsFieldsFragment} from "../../../../graphql-types"
 import Project from "./project/project"
 
 type RenderProps = {
-    data: ProjectsFieldsFragment
+    data: ProjectsFieldsFragment,
+    lang: {
+        locale: string,
+        defaultLocale: string
+    }
 }
 
-const Projects:React.FC<RenderProps> = ({data}) => {
+const Projects:React.FC<RenderProps> = ({data, lang}) => {
 
     return (
         <section id="projects" className={styles.container}>
@@ -22,7 +26,7 @@ const Projects:React.FC<RenderProps> = ({data}) => {
                 <div className={styles.projects}>
                     <Project data={data.projects[0]} color={"#0CF2B1"} />
                     <Project data={data.projects[1]} color={"#AB05F2"} />
-                    <a href={"/"} className={styles.seeAll}>SEE ALL</a>
+                    <a href={lang.locale === lang.defaultLocale ? `/projects` : `/${lang.locale}/projects`} className={styles.seeAll}>SEE ALL</a>
                 </div>
             </div>
         </section>
