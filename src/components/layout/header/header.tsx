@@ -2,10 +2,14 @@ import React, { useState } from 'react';
 import * as styles from './header.module.scss'
 import useWindowWidth from "../../../hooks/use-window-width";
 import BurgerMenu from "./burguer-menu/burger-menu";
+import {graphql} from "gatsby";
+import {HeaderFieldsFragment} from "../../../../graphql-types";
 
-type RenderProps = {}
+type RenderProps = {
+    data: HeaderFieldsFragment
+}
 
-const Header: React.FC<RenderProps> = ({ }) => {
+const Header: React.FC<RenderProps> = ({ data }) => {
 
     const isTablet = useWindowWidth() < 1140;
     const [menuOpen, setMenuOpen] = useState(false);
@@ -27,16 +31,16 @@ const Header: React.FC<RenderProps> = ({ }) => {
         return (
             <ul className={styles.linksList}>
                 <li className={styles.linkContainer}>
-                    <a className={styles.link} href="#">ABOUT</a>
+                    <a className={styles.link} href="#">{data.about}</a>
                 </li>
                 <li className={styles.linkContainer}>
-                    <a className={styles.link} href="#">SKILLS</a>
+                    <a className={styles.link} href="#">{data.skills}</a>
                 </li>
                 <li className={styles.linkContainer}>
-                    <a className={styles.link} href="#">PROJECTS</a>
+                    <a className={styles.link} href="#">{data.projects}</a>
                 </li>
                 <li className={styles.linkContainer}>
-                    <a className={styles.link} href="#">CONTACT</a>
+                    <a className={styles.link} href="#">{data.contact}</a>
                 </li>
             </ul>
         )
@@ -65,5 +69,14 @@ const Header: React.FC<RenderProps> = ({ }) => {
         setMenuOpen(!menuOpen);
     }
 }
+
+export const fragment = graphql`
+    fragment HeaderFields on DatoCmsHeader {
+        about
+        contact
+        projects
+        skills
+    }
+`
 
 export default Header;

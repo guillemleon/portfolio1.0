@@ -2,10 +2,14 @@ import * as React from "react"
 import * as styles from './about.module.scss'
 import {useEffect, useRef} from "react"
 import PictureProfile from "../../../assets/images/profile.jpg";
+import {graphql} from "gatsby";
+import {AboutFieldsFragment} from "../../../../graphql-types";
 
-type RenderProps = {}
+type RenderProps = {
+    data: AboutFieldsFragment
+}
 
-const About:React.FC<RenderProps> = (pageContext) => {
+const About:React.FC<RenderProps> = ({data}) => {
 
     const animatedElements = {
         title: useRef(null),
@@ -34,7 +38,7 @@ const About:React.FC<RenderProps> = (pageContext) => {
             <div className={styles.content}>
                 <div className={styles.aboutInfo}>
                     <h1 className={styles.title} ref={animatedElements.title}>
-                        ABOUT ME
+                        {data.aboutTitle}
                     </h1>
                     <div className={styles.mainData}>
                         <div className={styles.imageContainer} ref={animatedElements.image}>
@@ -42,23 +46,17 @@ const About:React.FC<RenderProps> = (pageContext) => {
                         </div>
                         <div className={styles.textContainer}>
                             <p className={styles.text} ref={animatedElements.text}>
-                                I'm currently working in Extia with the JAMSTACK technology.
-                                That includes ReactJS, gatsby and DatoCMS. That makes pages faster and is easier to
-                                manage the translations and add new content for the contributors.
+                                {data.aboutParagraphOne}
                             </p>
                             <p className={styles.text} ref={animatedElements.text1}>
-                                My knowledge is focused mainly on React, React Native, Redux for the state management,
-                                gatsby, Typescript, some angular and relational databases like MySQL or Postgres.
-                                Also I'd love to learn new technologies like Vue. On the backend side my knowledge
-                                is academic and focused on NodeJS and Express, PHP and some django.
+                                {data.aboutParagraphTwo}
                             </p>
                             <p className={styles.text} ref={animatedElements.text2}>
-                                I'm quick learner and eager to improve my skills as a developer. I'm interested in
-                                constant learning as a frontend and backend developer.
+                                {data.aboutParagraphThree}
                             </p>
                             <div className={styles.buttonContainer}>
                                 <button className={styles.button} ref={animatedElements.button}>
-                                    SEE RESUME
+                                    {data.seeResumeButtonTitle}
                                 </button>
                             </div>
                         </div>
@@ -82,5 +80,19 @@ const About:React.FC<RenderProps> = (pageContext) => {
 
 }
 
+export const fragment = graphql`
+    fragment AboutFields on DatoCmsHomePage {
+        aboutTitle
+        seeResumeButtonTitle
+        aboutImage {
+            gatsbyImageData(layout: FIXED)
+            format
+            alt
+        }
+        aboutParagraphOne
+        aboutParagraphTwo
+        aboutParagraphThree
+    }
+`
 
 export default About

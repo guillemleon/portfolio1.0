@@ -1,4 +1,4 @@
-@import "../../../variables.module.scss";
+@import "variables";
 
 .container {
   width: 100vw;
@@ -6,7 +6,7 @@
   background-color: $black;
   display: flex;
   justify-content: center;
-  padding: 128px 16px 0 16px;
+  padding: 128px 16px 50px 16px;
 }
 
 .content {
@@ -29,6 +29,7 @@
   height: 100%;
   display: flex;
   padding-top: 64px;
+  overflow: hidden;
 }
 
 .selectorsContainer {
@@ -43,6 +44,8 @@
   list-style: none;
   padding: 0;
   overflow: hidden;
+  transform: translateY(900px);
+  transition: transform .5s ease-in-out;
 }
 
 .selector {
@@ -121,8 +124,6 @@
   text-transform: uppercase;
   font-family: "Raleway-black";
   margin-bottom: 32px;
-  transform: translateY(900px);
-  transition: transform .5s ease-in-out;
 }
 
 .skillContainer {
@@ -130,8 +131,6 @@
   padding: 12px 0;
   list-style: none;
   overflow: hidden;
-  transform: translateY(900px);
-  transition: transform .5s ease-in-out;
 }
 
 .skill {

@@ -1,4 +1,4 @@
-@import "../../../variables.module.scss";
+@import "variables";
 
 .container {
   width: 100vw;
@@ -6,19 +6,102 @@
   background-color: white;
   display: flex;
   justify-content: center;
-  padding: 128px 16px 0 16px;
+  padding: 128px 16px 128px 16px;
 }
 
 .content {
-  width: $contentWidth;
+  width: $contentWidth + 60px;
   height: 100%;
   overflow: hidden;
+  padding: 30px;
 }
 
 .title {
   font-size: 100px;
   font-family: "Raleway-extraBold";
   color: $black;
-  margin: 0 0 32px 0;
   transition: transform .5s ease-in-out;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.underline {
+  width: 340px;
+  height: 20px;
+  background-color: $black;
+  margin: 18px 0 24px 0;
+}
+
+.highlightedProject {
+  margin: 32px 0 32px 0;
+  height: 500px;
+}
+
+.projects {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.seeAll {
+  width: 20%;
+  height: 350px;
+  border: 10px solid $green;
+  background: $green;
+  background: linear-gradient(to left, $green 50%, white 50%) right;
+  background-size: 200%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 60px;
+  font-family: "Raleway-extraBold";
+  text-decoration: none;
+  color: black;
+  padding: 0 40px;
+  text-align: center;
+  box-shadow: 0 6px 6px rgba(0,0,0,0.3);
+  transition: all .3s ease-in-out;
+
+  &:hover {
+    background-position: left;
+  }
+}
+
+@include mobile {
+  .container {
+    padding: 96px 16px 96px 16px;
+  }
+
+  .content {
+    padding: 0 0 10px 0;
+  }
+
+  .title {
+    font-size: $title;
+    display: flex;
+    justify-content: center;
+  }
+
+  .underline {
+    display: none;
+  }
+
+  .projects {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .highlightedProject {
+    width: 100%;
+    height: 200px;
+    margin: 32px 0 16px 0;
+  }
+
+  .seeAll {
+    width: 70%;
+    height: 80px;
+    font-size: 28px;
+    maring: 16px 0;
+    border: 5px solid $green;
+  }
 }

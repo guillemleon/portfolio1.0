@@ -1,4 +1,4 @@
-@import "../variables.module.scss";
+@import "variables";
 
 .container {
   width: $contentWidth;
@@ -7,7 +7,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
 }
 
 .content {
@@ -16,7 +15,6 @@
   justify-content: center;
   align-items: center;
   margin-top: 100px;
-  overflow: hidden;
 }
 
 .title {
@@ -28,8 +26,7 @@
   white-space: pre-wrap;
   transform: translateY(600px);
   transition: all .5s ease-in-out;
-  overflow: hidden;
-
+  opacity: 0;
 }
 
 .titleGreen {
@@ -39,7 +36,7 @@
   margin: 0;
   transform: translateY(600px);
   transition: all .5s ease-in-out;
-
+  opacity: 0;
 }
 
 .continueCircle {
@@ -54,6 +51,7 @@
   justify-content: center;
   transform: translateY(600px);
   transition: transform .5s ease-in-out;
+  opacity: 0;
 
   &:hover {
     background-color: $black;

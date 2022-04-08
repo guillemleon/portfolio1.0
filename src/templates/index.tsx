@@ -7,10 +7,15 @@ import {useEffect, useRef} from "react";
 import About from "../components/home/about/about";
 import Skills from "../components/home/skills/skills";
 import Projects from "../components/home/projects/projects";
+import {graphql} from "gatsby";
+import {HomeQuery} from "../../graphql-types";
 
-type RenderProps = {}
+type RenderProps = {
+    data: HomeQuery,
+    pageContext
+}
 
-const IndexPage:React.FC<RenderProps> = (pageContext) => {
+const IndexPage:React.FC<RenderProps> = ({ data, pageContext }) => {
 
     let coverElements = {
         content: useRef(null),
@@ -25,22 +30,22 @@ const IndexPage:React.FC<RenderProps> = (pageContext) => {
     })
 
     return (
-        <Layout>
+        <Layout header={data.datoCmsHeader}>
             <div className={styles.container}>
                 <div className={styles.content}  ref={coverElements.content}>
-                    <h1 className={styles.title} ref={coverElements.title}>HELLO,</h1>
+                    <h1 className={styles.title} ref={coverElements.title}>{data.datoCmsHomePage.coverTitleOne}</h1>
                     <h1 className={styles.title} ref={coverElements.title2}>
-                        I'M
-                        <div className={styles.titleGreen} ref={coverElements.title3}> GUILLEM</div>
+                        {data.datoCmsHomePage.coverTitleTwo}
+                        <div className={styles.titleGreen} ref={coverElements.title3}>{' ' + data.datoCmsHomePage.coverTitleThree}</div>
                     </h1>
                 </div>
                 <div className={styles.continueCircle} ref={coverElements.button} onClick={() => scrollToAbout()}>
-                    <ReactSVG className={styles.arrow} src={arrow}></ReactSVG>
+                    <ReactSVG className={styles.arrow} src={arrow} />
                 </div>
             </div>
-            <About />
+            <About data={data.datoCmsHomePage} />
             <Skills />
-            <Projects />
+            <Projects data={data.datoCmsHomePage}/>
         </Layout>
     )
 
@@ -50,6 +55,7 @@ const IndexPage:React.FC<RenderProps> = (pageContext) => {
             if(value.current) {
                 setInterval(() => {
                     value.current.style.transform = "translateY(0px)";
+                    value.current.style.opacity = 1;
                 }, 200 * index)
                 index++;
             }
@@ -67,6 +73,21 @@ const IndexPage:React.FC<RenderProps> = (pageContext) => {
     }
 
 }
+
+export const pageQuery = graphql`
+    query Home($locale: String!) {
+        datoCmsHomePage(locale: { eq: $locale }) {
+            coverTitleOne
+            coverTitleThree
+            coverTitleTwo
+            ...ProjectsFields
+            ...AboutFields
+        }
+        datoCmsHeader(locale: { eq: $locale }) {
+            ...HeaderFields
+        }
+    }
+`
 
 
 export default IndexPage

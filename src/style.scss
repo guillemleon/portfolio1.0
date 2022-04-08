@@ -1,0 +1,31 @@
+/* CSS Custom Properties Definitions */
+@import "./typography.scss";
+@import "variables";
+
+/* HTML elements */
+
+*,
+:after,
+:before {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: "Proxima Nova";
+}
+
+a {
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
