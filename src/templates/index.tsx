@@ -32,6 +32,7 @@ const IndexPage:React.FC<RenderProps> = ({ data, pageContext }) => {
     return (
         <Layout
             header={data.datoCmsHeader}
+            footer={data.datoCmsFooter}
             lang={{
                 defaultLocale: pageContext.defaultLocale,
                 locale: pageContext.locale
@@ -97,6 +98,9 @@ export const pageQuery = graphql`
         }
         datoCmsHeader(locale: { eq: $locale }) {
             ...HeaderFields
+        }
+        datoCmsFooter(locale: { eq: $locale }) {
+            ...FooterFields
         }
     }
 `

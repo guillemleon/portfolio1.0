@@ -55,9 +55,9 @@ const About:React.FC<RenderProps> = ({data}) => {
                                 {data.aboutParagraphThree}
                             </p>
                             <div className={styles.buttonContainer}>
-                                <button className={styles.button} ref={animatedElements.button}>
+                                <a target="_blank" href="http://localhost:3000/cv/guillem_leon_cv.pdf" className={styles.button} ref={animatedElements.button}>
                                     {data.seeResumeButtonTitle}
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>

@@ -97,6 +97,11 @@
   transform: translateY(700px);
   transition: transform .5s ease-in-out;
   text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: black;
 
   &:hover {
     border: 2px solid $green;
