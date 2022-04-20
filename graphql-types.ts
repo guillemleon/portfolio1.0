@@ -864,6 +864,16 @@ export type DatoCmsAllLocalesForDatoCmsHomePageCoverTitleThree = {
   value?: Maybe<Scalars['String']>;
 };
 
+export type DatoCmsAllLocalesForDatoCmsHomePageAboutDescription = {
+  locale?: Maybe<Scalars['String']>;
+  value?: Maybe<Scalars['String']>;
+};
+
+export type DatoCmsAllLocalesForDatoCmsHomePageCoverSubtitle = {
+  locale?: Maybe<Scalars['String']>;
+  value?: Maybe<Scalars['String']>;
+};
+
 export type DatoCmsAllLocalesForDatoCmsHomePageAboutParagraphOne = {
   locale?: Maybe<Scalars['String']>;
   value?: Maybe<Scalars['String']>;
@@ -882,6 +892,11 @@ export type DatoCmsAllLocalesForDatoCmsHomePageAboutParagraphThree = {
 export type DatoCmsAllLocalesForDatoCmsHomePageSeeResumeButtonTitle = {
   locale?: Maybe<Scalars['String']>;
   value?: Maybe<Scalars['String']>;
+};
+
+export type DatoCmsAllLocalesForDatoCmsHomePageAboutItems = {
+  locale?: Maybe<Scalars['String']>;
+  value?: Maybe<Array<Maybe<DatoCmsAboutItem>>>;
 };
 
 export type DatoCmsHomePage = Node & {
@@ -906,6 +921,10 @@ export type DatoCmsHomePage = Node & {
   _allAboutTextLocales?: Maybe<Array<Maybe<DatoCmsAllLocalesForDatoCmsHomePageAboutText>>>;
   coverTitleThree?: Maybe<Scalars['String']>;
   _allCoverTitleThreeLocales?: Maybe<Array<Maybe<DatoCmsAllLocalesForDatoCmsHomePageCoverTitleThree>>>;
+  aboutDescription?: Maybe<Scalars['String']>;
+  _allAboutDescriptionLocales?: Maybe<Array<Maybe<DatoCmsAllLocalesForDatoCmsHomePageAboutDescription>>>;
+  coverSubtitle?: Maybe<Scalars['String']>;
+  _allCoverSubtitleLocales?: Maybe<Array<Maybe<DatoCmsAllLocalesForDatoCmsHomePageCoverSubtitle>>>;
   aboutParagraphOne?: Maybe<Scalars['String']>;
   _allAboutParagraphOneLocales?: Maybe<Array<Maybe<DatoCmsAllLocalesForDatoCmsHomePageAboutParagraphOne>>>;
   aboutParagraphTwo?: Maybe<Scalars['String']>;
@@ -914,6 +933,8 @@ export type DatoCmsHomePage = Node & {
   _allAboutParagraphThreeLocales?: Maybe<Array<Maybe<DatoCmsAllLocalesForDatoCmsHomePageAboutParagraphThree>>>;
   seeResumeButtonTitle?: Maybe<Scalars['String']>;
   _allSeeResumeButtonTitleLocales?: Maybe<Array<Maybe<DatoCmsAllLocalesForDatoCmsHomePageSeeResumeButtonTitle>>>;
+  aboutItems?: Maybe<Array<Maybe<DatoCmsAboutItem>>>;
+  _allAboutItemsLocales?: Maybe<Array<Maybe<DatoCmsAllLocalesForDatoCmsHomePageAboutItems>>>;
   meta?: Maybe<DatoCmsMetaField>;
   originalId?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
@@ -941,6 +962,7 @@ export type DatoCmsSkillGroup = Node & {
 
 export type DatoCmsSkill = Node & {
   name?: Maybe<Scalars['String']>;
+  percentage?: Maybe<Scalars['Int']>;
   meta?: Maybe<DatoCmsMetaField>;
   originalId?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
@@ -1099,6 +1121,21 @@ export type DatoCmsContactPage = Node & {
   _allMessagePlaceholderLocales?: Maybe<Array<Maybe<DatoCmsAllLocalesForDatoCmsContactPageMessagePlaceholder>>>;
   submitButtonTitle?: Maybe<Scalars['String']>;
   _allSubmitButtonTitleLocales?: Maybe<Array<Maybe<DatoCmsAllLocalesForDatoCmsContactPageSubmitButtonTitle>>>;
+  meta?: Maybe<DatoCmsMetaField>;
+  originalId?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  seoMetaTags?: Maybe<DatoCmsSeoMetaTags>;
+  model?: Maybe<DatoCmsModel>;
+  id: Scalars['ID'];
+  parent?: Maybe<Node>;
+  children: Array<Node>;
+  internal: Internal;
+};
+
+export type DatoCmsAboutItem = Node & {
+  title?: Maybe<Scalars['String']>;
+  subtitle?: Maybe<Scalars['String']>;
+  icon?: Maybe<DatoCmsFileField>;
   meta?: Maybe<DatoCmsMetaField>;
   originalId?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
@@ -1604,6 +1641,8 @@ export type Query = {
   allDatoCmsFooter: DatoCmsFooterConnection;
   datoCmsContactPage?: Maybe<DatoCmsContactPage>;
   allDatoCmsContactPage: DatoCmsContactPageConnection;
+  datoCmsAboutItem?: Maybe<DatoCmsAboutItem>;
+  allDatoCmsAboutItem: DatoCmsAboutItemConnection;
   datoCmsAsset?: Maybe<DatoCmsAsset>;
   allDatoCmsAsset: DatoCmsAssetConnection;
   datoCmsSite?: Maybe<DatoCmsSite>;
@@ -1885,6 +1924,10 @@ export type QueryDatoCmsHomePageArgs = {
   _allAboutTextLocales?: InputMaybe<DatoCmsAllLocalesForDatoCmsHomePageAboutTextFilterListInput>;
   coverTitleThree?: InputMaybe<StringQueryOperatorInput>;
   _allCoverTitleThreeLocales?: InputMaybe<DatoCmsAllLocalesForDatoCmsHomePageCoverTitleThreeFilterListInput>;
+  aboutDescription?: InputMaybe<StringQueryOperatorInput>;
+  _allAboutDescriptionLocales?: InputMaybe<DatoCmsAllLocalesForDatoCmsHomePageAboutDescriptionFilterListInput>;
+  coverSubtitle?: InputMaybe<StringQueryOperatorInput>;
+  _allCoverSubtitleLocales?: InputMaybe<DatoCmsAllLocalesForDatoCmsHomePageCoverSubtitleFilterListInput>;
   aboutParagraphOne?: InputMaybe<StringQueryOperatorInput>;
   _allAboutParagraphOneLocales?: InputMaybe<DatoCmsAllLocalesForDatoCmsHomePageAboutParagraphOneFilterListInput>;
   aboutParagraphTwo?: InputMaybe<StringQueryOperatorInput>;
@@ -1893,6 +1936,8 @@ export type QueryDatoCmsHomePageArgs = {
   _allAboutParagraphThreeLocales?: InputMaybe<DatoCmsAllLocalesForDatoCmsHomePageAboutParagraphThreeFilterListInput>;
   seeResumeButtonTitle?: InputMaybe<StringQueryOperatorInput>;
   _allSeeResumeButtonTitleLocales?: InputMaybe<DatoCmsAllLocalesForDatoCmsHomePageSeeResumeButtonTitleFilterListInput>;
+  aboutItems?: InputMaybe<DatoCmsAboutItemFilterListInput>;
+  _allAboutItemsLocales?: InputMaybe<DatoCmsAllLocalesForDatoCmsHomePageAboutItemsFilterListInput>;
   meta?: InputMaybe<DatoCmsMetaFieldFilterInput>;
   originalId?: InputMaybe<StringQueryOperatorInput>;
   locale?: InputMaybe<StringQueryOperatorInput>;
@@ -1938,6 +1983,7 @@ export type QueryAllDatoCmsSkillGroupArgs = {
 
 export type QueryDatoCmsSkillArgs = {
   name?: InputMaybe<StringQueryOperatorInput>;
+  percentage?: InputMaybe<IntQueryOperatorInput>;
   meta?: InputMaybe<DatoCmsMetaFieldFilterInput>;
   originalId?: InputMaybe<StringQueryOperatorInput>;
   locale?: InputMaybe<StringQueryOperatorInput>;
@@ -2072,6 +2118,30 @@ export type QueryDatoCmsContactPageArgs = {
 export type QueryAllDatoCmsContactPageArgs = {
   filter?: InputMaybe<DatoCmsContactPageFilterInput>;
   sort?: InputMaybe<DatoCmsContactPageSortInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type QueryDatoCmsAboutItemArgs = {
+  title?: InputMaybe<StringQueryOperatorInput>;
+  subtitle?: InputMaybe<StringQueryOperatorInput>;
+  icon?: InputMaybe<DatoCmsFileFieldFilterInput>;
+  meta?: InputMaybe<DatoCmsMetaFieldFilterInput>;
+  originalId?: InputMaybe<StringQueryOperatorInput>;
+  locale?: InputMaybe<StringQueryOperatorInput>;
+  seoMetaTags?: InputMaybe<DatoCmsSeoMetaTagsFilterInput>;
+  model?: InputMaybe<DatoCmsModelFilterInput>;
+  id?: InputMaybe<StringQueryOperatorInput>;
+  parent?: InputMaybe<NodeFilterInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+};
+
+
+export type QueryAllDatoCmsAboutItemArgs = {
+  filter?: InputMaybe<DatoCmsAboutItemFilterInput>;
+  sort?: InputMaybe<DatoCmsAboutItemSortInput>;
   skip?: InputMaybe<Scalars['Int']>;
   limit?: InputMaybe<Scalars['Int']>;
 };
@@ -4669,6 +4739,7 @@ export type DatoCmsSkillFilterListInput = {
 
 export type DatoCmsSkillFilterInput = {
   name?: InputMaybe<StringQueryOperatorInput>;
+  percentage?: InputMaybe<IntQueryOperatorInput>;
   meta?: InputMaybe<DatoCmsMetaFieldFilterInput>;
   originalId?: InputMaybe<StringQueryOperatorInput>;
   locale?: InputMaybe<StringQueryOperatorInput>;
@@ -4731,6 +4802,24 @@ export type DatoCmsAllLocalesForDatoCmsHomePageCoverTitleThreeFilterInput = {
   value?: InputMaybe<StringQueryOperatorInput>;
 };
 
+export type DatoCmsAllLocalesForDatoCmsHomePageAboutDescriptionFilterListInput = {
+  elemMatch?: InputMaybe<DatoCmsAllLocalesForDatoCmsHomePageAboutDescriptionFilterInput>;
+};
+
+export type DatoCmsAllLocalesForDatoCmsHomePageAboutDescriptionFilterInput = {
+  locale?: InputMaybe<StringQueryOperatorInput>;
+  value?: InputMaybe<StringQueryOperatorInput>;
+};
+
+export type DatoCmsAllLocalesForDatoCmsHomePageCoverSubtitleFilterListInput = {
+  elemMatch?: InputMaybe<DatoCmsAllLocalesForDatoCmsHomePageCoverSubtitleFilterInput>;
+};
+
+export type DatoCmsAllLocalesForDatoCmsHomePageCoverSubtitleFilterInput = {
+  locale?: InputMaybe<StringQueryOperatorInput>;
+  value?: InputMaybe<StringQueryOperatorInput>;
+};
+
 export type DatoCmsAllLocalesForDatoCmsHomePageAboutParagraphOneFilterListInput = {
   elemMatch?: InputMaybe<DatoCmsAllLocalesForDatoCmsHomePageAboutParagraphOneFilterInput>;
 };
@@ -4765,6 +4854,34 @@ export type DatoCmsAllLocalesForDatoCmsHomePageSeeResumeButtonTitleFilterListInp
 export type DatoCmsAllLocalesForDatoCmsHomePageSeeResumeButtonTitleFilterInput = {
   locale?: InputMaybe<StringQueryOperatorInput>;
   value?: InputMaybe<StringQueryOperatorInput>;
+};
+
+export type DatoCmsAboutItemFilterListInput = {
+  elemMatch?: InputMaybe<DatoCmsAboutItemFilterInput>;
+};
+
+export type DatoCmsAboutItemFilterInput = {
+  title?: InputMaybe<StringQueryOperatorInput>;
+  subtitle?: InputMaybe<StringQueryOperatorInput>;
+  icon?: InputMaybe<DatoCmsFileFieldFilterInput>;
+  meta?: InputMaybe<DatoCmsMetaFieldFilterInput>;
+  originalId?: InputMaybe<StringQueryOperatorInput>;
+  locale?: InputMaybe<StringQueryOperatorInput>;
+  seoMetaTags?: InputMaybe<DatoCmsSeoMetaTagsFilterInput>;
+  model?: InputMaybe<DatoCmsModelFilterInput>;
+  id?: InputMaybe<StringQueryOperatorInput>;
+  parent?: InputMaybe<NodeFilterInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+};
+
+export type DatoCmsAllLocalesForDatoCmsHomePageAboutItemsFilterListInput = {
+  elemMatch?: InputMaybe<DatoCmsAllLocalesForDatoCmsHomePageAboutItemsFilterInput>;
+};
+
+export type DatoCmsAllLocalesForDatoCmsHomePageAboutItemsFilterInput = {
+  locale?: InputMaybe<StringQueryOperatorInput>;
+  value?: InputMaybe<DatoCmsAboutItemFilterListInput>;
 };
 
 export type DatoCmsHomePageConnection = {
@@ -5066,6 +5183,7 @@ export type DatoCmsHomePageFieldsEnum =
   | 'skills___title'
   | 'skills___skills'
   | 'skills___skills___name'
+  | 'skills___skills___percentage'
   | 'skills___skills___meta___createdAt'
   | 'skills___skills___meta___updatedAt'
   | 'skills___skills___meta___publishedAt'
@@ -5201,6 +5319,7 @@ export type DatoCmsHomePageFieldsEnum =
   | '_allSkillsLocales___value___title'
   | '_allSkillsLocales___value___skills'
   | '_allSkillsLocales___value___skills___name'
+  | '_allSkillsLocales___value___skills___percentage'
   | '_allSkillsLocales___value___skills___originalId'
   | '_allSkillsLocales___value___skills___locale'
   | '_allSkillsLocales___value___skills___id'
@@ -5563,6 +5682,14 @@ export type DatoCmsHomePageFieldsEnum =
   | '_allCoverTitleThreeLocales'
   | '_allCoverTitleThreeLocales___locale'
   | '_allCoverTitleThreeLocales___value'
+  | 'aboutDescription'
+  | '_allAboutDescriptionLocales'
+  | '_allAboutDescriptionLocales___locale'
+  | '_allAboutDescriptionLocales___value'
+  | 'coverSubtitle'
+  | '_allCoverSubtitleLocales'
+  | '_allCoverSubtitleLocales___locale'
+  | '_allCoverSubtitleLocales___value'
   | 'aboutParagraphOne'
   | '_allAboutParagraphOneLocales'
   | '_allAboutParagraphOneLocales___locale'
@@ -5579,6 +5706,237 @@ export type DatoCmsHomePageFieldsEnum =
   | '_allSeeResumeButtonTitleLocales'
   | '_allSeeResumeButtonTitleLocales___locale'
   | '_allSeeResumeButtonTitleLocales___value'
+  | 'aboutItems'
+  | 'aboutItems___title'
+  | 'aboutItems___subtitle'
+  | 'aboutItems___icon___size'
+  | 'aboutItems___icon___width'
+  | 'aboutItems___icon___height'
+  | 'aboutItems___icon___path'
+  | 'aboutItems___icon___format'
+  | 'aboutItems___icon___isImage'
+  | 'aboutItems___icon___notes'
+  | 'aboutItems___icon___author'
+  | 'aboutItems___icon___copyright'
+  | 'aboutItems___icon___tags'
+  | 'aboutItems___icon___smartTags'
+  | 'aboutItems___icon___filename'
+  | 'aboutItems___icon___basename'
+  | 'aboutItems___icon___exifInfo'
+  | 'aboutItems___icon___mimeType'
+  | 'aboutItems___icon___colors'
+  | 'aboutItems___icon___colors___red'
+  | 'aboutItems___icon___colors___green'
+  | 'aboutItems___icon___colors___blue'
+  | 'aboutItems___icon___colors___alpha'
+  | 'aboutItems___icon___colors___rgb'
+  | 'aboutItems___icon___colors___hex'
+  | 'aboutItems___icon___blurhash'
+  | 'aboutItems___icon___originalId'
+  | 'aboutItems___icon___url'
+  | 'aboutItems___icon___createdAt'
+  | 'aboutItems___icon___video___muxPlaybackId'
+  | 'aboutItems___icon___video___frameRate'
+  | 'aboutItems___icon___video___duration'
+  | 'aboutItems___icon___video___streamingUrl'
+  | 'aboutItems___icon___video___thumbnailUrl'
+  | 'aboutItems___icon___video___mp4Url'
+  | 'aboutItems___icon___fluid___base64'
+  | 'aboutItems___icon___fluid___tracedSVG'
+  | 'aboutItems___icon___fluid___aspectRatio'
+  | 'aboutItems___icon___fluid___width'
+  | 'aboutItems___icon___fluid___height'
+  | 'aboutItems___icon___fluid___src'
+  | 'aboutItems___icon___fluid___srcSet'
+  | 'aboutItems___icon___fluid___sizes'
+  | 'aboutItems___icon___sizes___base64'
+  | 'aboutItems___icon___sizes___tracedSVG'
+  | 'aboutItems___icon___sizes___aspectRatio'
+  | 'aboutItems___icon___sizes___width'
+  | 'aboutItems___icon___sizes___height'
+  | 'aboutItems___icon___sizes___src'
+  | 'aboutItems___icon___sizes___srcSet'
+  | 'aboutItems___icon___sizes___sizes'
+  | 'aboutItems___icon___fixed___base64'
+  | 'aboutItems___icon___fixed___tracedSVG'
+  | 'aboutItems___icon___fixed___aspectRatio'
+  | 'aboutItems___icon___fixed___width'
+  | 'aboutItems___icon___fixed___height'
+  | 'aboutItems___icon___fixed___src'
+  | 'aboutItems___icon___fixed___srcSet'
+  | 'aboutItems___icon___fixed___sizes'
+  | 'aboutItems___icon___resolutions___base64'
+  | 'aboutItems___icon___resolutions___tracedSVG'
+  | 'aboutItems___icon___resolutions___aspectRatio'
+  | 'aboutItems___icon___resolutions___width'
+  | 'aboutItems___icon___resolutions___height'
+  | 'aboutItems___icon___resolutions___src'
+  | 'aboutItems___icon___resolutions___srcSet'
+  | 'aboutItems___icon___resolutions___sizes'
+  | 'aboutItems___icon___gatsbyImageData'
+  | 'aboutItems___icon___alt'
+  | 'aboutItems___icon___title'
+  | 'aboutItems___icon___customData'
+  | 'aboutItems___icon___focalPoint___x'
+  | 'aboutItems___icon___focalPoint___y'
+  | 'aboutItems___meta___createdAt'
+  | 'aboutItems___meta___updatedAt'
+  | 'aboutItems___meta___publishedAt'
+  | 'aboutItems___meta___firstPublishedAt'
+  | 'aboutItems___meta___isValid'
+  | 'aboutItems___meta___status'
+  | 'aboutItems___originalId'
+  | 'aboutItems___locale'
+  | 'aboutItems___seoMetaTags___tags'
+  | 'aboutItems___seoMetaTags___id'
+  | 'aboutItems___seoMetaTags___parent___id'
+  | 'aboutItems___seoMetaTags___parent___children'
+  | 'aboutItems___seoMetaTags___children'
+  | 'aboutItems___seoMetaTags___children___id'
+  | 'aboutItems___seoMetaTags___children___children'
+  | 'aboutItems___seoMetaTags___internal___content'
+  | 'aboutItems___seoMetaTags___internal___contentDigest'
+  | 'aboutItems___seoMetaTags___internal___description'
+  | 'aboutItems___seoMetaTags___internal___fieldOwners'
+  | 'aboutItems___seoMetaTags___internal___ignoreType'
+  | 'aboutItems___seoMetaTags___internal___mediaType'
+  | 'aboutItems___seoMetaTags___internal___owner'
+  | 'aboutItems___seoMetaTags___internal___type'
+  | 'aboutItems___model___name'
+  | 'aboutItems___model___singleton'
+  | 'aboutItems___model___sortable'
+  | 'aboutItems___model___apiKey'
+  | 'aboutItems___model___orderingDirection'
+  | 'aboutItems___model___tree'
+  | 'aboutItems___model___modularBlock'
+  | 'aboutItems___model___draftModeActive'
+  | 'aboutItems___model___allLocalesRequired'
+  | 'aboutItems___model___collectionAppeareance'
+  | 'aboutItems___model___hasSingletonItem'
+  | 'aboutItems___model___originalId'
+  | 'aboutItems___model___fields___tags'
+  | 'aboutItems___model___fields___id'
+  | 'aboutItems___model___fields___children'
+  | 'aboutItems___model___id'
+  | 'aboutItems___model___parent___id'
+  | 'aboutItems___model___parent___children'
+  | 'aboutItems___model___children'
+  | 'aboutItems___model___children___id'
+  | 'aboutItems___model___children___children'
+  | 'aboutItems___model___internal___content'
+  | 'aboutItems___model___internal___contentDigest'
+  | 'aboutItems___model___internal___description'
+  | 'aboutItems___model___internal___fieldOwners'
+  | 'aboutItems___model___internal___ignoreType'
+  | 'aboutItems___model___internal___mediaType'
+  | 'aboutItems___model___internal___owner'
+  | 'aboutItems___model___internal___type'
+  | 'aboutItems___id'
+  | 'aboutItems___parent___id'
+  | 'aboutItems___parent___parent___id'
+  | 'aboutItems___parent___parent___children'
+  | 'aboutItems___parent___children'
+  | 'aboutItems___parent___children___id'
+  | 'aboutItems___parent___children___children'
+  | 'aboutItems___parent___internal___content'
+  | 'aboutItems___parent___internal___contentDigest'
+  | 'aboutItems___parent___internal___description'
+  | 'aboutItems___parent___internal___fieldOwners'
+  | 'aboutItems___parent___internal___ignoreType'
+  | 'aboutItems___parent___internal___mediaType'
+  | 'aboutItems___parent___internal___owner'
+  | 'aboutItems___parent___internal___type'
+  | 'aboutItems___children'
+  | 'aboutItems___children___id'
+  | 'aboutItems___children___parent___id'
+  | 'aboutItems___children___parent___children'
+  | 'aboutItems___children___children'
+  | 'aboutItems___children___children___id'
+  | 'aboutItems___children___children___children'
+  | 'aboutItems___children___internal___content'
+  | 'aboutItems___children___internal___contentDigest'
+  | 'aboutItems___children___internal___description'
+  | 'aboutItems___children___internal___fieldOwners'
+  | 'aboutItems___children___internal___ignoreType'
+  | 'aboutItems___children___internal___mediaType'
+  | 'aboutItems___children___internal___owner'
+  | 'aboutItems___children___internal___type'
+  | 'aboutItems___internal___content'
+  | 'aboutItems___internal___contentDigest'
+  | 'aboutItems___internal___description'
+  | 'aboutItems___internal___fieldOwners'
+  | 'aboutItems___internal___ignoreType'
+  | 'aboutItems___internal___mediaType'
+  | 'aboutItems___internal___owner'
+  | 'aboutItems___internal___type'
+  | '_allAboutItemsLocales'
+  | '_allAboutItemsLocales___locale'
+  | '_allAboutItemsLocales___value'
+  | '_allAboutItemsLocales___value___title'
+  | '_allAboutItemsLocales___value___subtitle'
+  | '_allAboutItemsLocales___value___icon___size'
+  | '_allAboutItemsLocales___value___icon___width'
+  | '_allAboutItemsLocales___value___icon___height'
+  | '_allAboutItemsLocales___value___icon___path'
+  | '_allAboutItemsLocales___value___icon___format'
+  | '_allAboutItemsLocales___value___icon___isImage'
+  | '_allAboutItemsLocales___value___icon___notes'
+  | '_allAboutItemsLocales___value___icon___author'
+  | '_allAboutItemsLocales___value___icon___copyright'
+  | '_allAboutItemsLocales___value___icon___tags'
+  | '_allAboutItemsLocales___value___icon___smartTags'
+  | '_allAboutItemsLocales___value___icon___filename'
+  | '_allAboutItemsLocales___value___icon___basename'
+  | '_allAboutItemsLocales___value___icon___exifInfo'
+  | '_allAboutItemsLocales___value___icon___mimeType'
+  | '_allAboutItemsLocales___value___icon___colors'
+  | '_allAboutItemsLocales___value___icon___blurhash'
+  | '_allAboutItemsLocales___value___icon___originalId'
+  | '_allAboutItemsLocales___value___icon___url'
+  | '_allAboutItemsLocales___value___icon___createdAt'
+  | '_allAboutItemsLocales___value___icon___gatsbyImageData'
+  | '_allAboutItemsLocales___value___icon___alt'
+  | '_allAboutItemsLocales___value___icon___title'
+  | '_allAboutItemsLocales___value___icon___customData'
+  | '_allAboutItemsLocales___value___meta___createdAt'
+  | '_allAboutItemsLocales___value___meta___updatedAt'
+  | '_allAboutItemsLocales___value___meta___publishedAt'
+  | '_allAboutItemsLocales___value___meta___firstPublishedAt'
+  | '_allAboutItemsLocales___value___meta___isValid'
+  | '_allAboutItemsLocales___value___meta___status'
+  | '_allAboutItemsLocales___value___originalId'
+  | '_allAboutItemsLocales___value___locale'
+  | '_allAboutItemsLocales___value___seoMetaTags___tags'
+  | '_allAboutItemsLocales___value___seoMetaTags___id'
+  | '_allAboutItemsLocales___value___seoMetaTags___children'
+  | '_allAboutItemsLocales___value___model___name'
+  | '_allAboutItemsLocales___value___model___singleton'
+  | '_allAboutItemsLocales___value___model___sortable'
+  | '_allAboutItemsLocales___value___model___apiKey'
+  | '_allAboutItemsLocales___value___model___orderingDirection'
+  | '_allAboutItemsLocales___value___model___tree'
+  | '_allAboutItemsLocales___value___model___modularBlock'
+  | '_allAboutItemsLocales___value___model___draftModeActive'
+  | '_allAboutItemsLocales___value___model___allLocalesRequired'
+  | '_allAboutItemsLocales___value___model___collectionAppeareance'
+  | '_allAboutItemsLocales___value___model___hasSingletonItem'
+  | '_allAboutItemsLocales___value___model___originalId'
+  | '_allAboutItemsLocales___value___model___id'
+  | '_allAboutItemsLocales___value___model___children'
+  | '_allAboutItemsLocales___value___id'
+  | '_allAboutItemsLocales___value___parent___id'
+  | '_allAboutItemsLocales___value___parent___children'
+  | '_allAboutItemsLocales___value___children'
+  | '_allAboutItemsLocales___value___children___id'
+  | '_allAboutItemsLocales___value___children___children'
+  | '_allAboutItemsLocales___value___internal___content'
+  | '_allAboutItemsLocales___value___internal___contentDigest'
+  | '_allAboutItemsLocales___value___internal___description'
+  | '_allAboutItemsLocales___value___internal___fieldOwners'
+  | '_allAboutItemsLocales___value___internal___ignoreType'
+  | '_allAboutItemsLocales___value___internal___mediaType'
+  | '_allAboutItemsLocales___value___internal___owner'
+  | '_allAboutItemsLocales___value___internal___type'
   | 'meta___createdAt'
   | 'meta___updatedAt'
   | 'meta___publishedAt'
@@ -5841,6 +6199,10 @@ export type DatoCmsHomePageFilterInput = {
   _allAboutTextLocales?: InputMaybe<DatoCmsAllLocalesForDatoCmsHomePageAboutTextFilterListInput>;
   coverTitleThree?: InputMaybe<StringQueryOperatorInput>;
   _allCoverTitleThreeLocales?: InputMaybe<DatoCmsAllLocalesForDatoCmsHomePageCoverTitleThreeFilterListInput>;
+  aboutDescription?: InputMaybe<StringQueryOperatorInput>;
+  _allAboutDescriptionLocales?: InputMaybe<DatoCmsAllLocalesForDatoCmsHomePageAboutDescriptionFilterListInput>;
+  coverSubtitle?: InputMaybe<StringQueryOperatorInput>;
+  _allCoverSubtitleLocales?: InputMaybe<DatoCmsAllLocalesForDatoCmsHomePageCoverSubtitleFilterListInput>;
   aboutParagraphOne?: InputMaybe<StringQueryOperatorInput>;
   _allAboutParagraphOneLocales?: InputMaybe<DatoCmsAllLocalesForDatoCmsHomePageAboutParagraphOneFilterListInput>;
   aboutParagraphTwo?: InputMaybe<StringQueryOperatorInput>;
@@ -5849,6 +6211,8 @@ export type DatoCmsHomePageFilterInput = {
   _allAboutParagraphThreeLocales?: InputMaybe<DatoCmsAllLocalesForDatoCmsHomePageAboutParagraphThreeFilterListInput>;
   seeResumeButtonTitle?: InputMaybe<StringQueryOperatorInput>;
   _allSeeResumeButtonTitleLocales?: InputMaybe<DatoCmsAllLocalesForDatoCmsHomePageSeeResumeButtonTitleFilterListInput>;
+  aboutItems?: InputMaybe<DatoCmsAboutItemFilterListInput>;
+  _allAboutItemsLocales?: InputMaybe<DatoCmsAllLocalesForDatoCmsHomePageAboutItemsFilterListInput>;
   meta?: InputMaybe<DatoCmsMetaFieldFilterInput>;
   originalId?: InputMaybe<StringQueryOperatorInput>;
   locale?: InputMaybe<StringQueryOperatorInput>;
@@ -5914,6 +6278,7 @@ export type DatoCmsSkillGroupFieldsEnum =
   | 'title'
   | 'skills'
   | 'skills___name'
+  | 'skills___percentage'
   | 'skills___meta___createdAt'
   | 'skills___meta___updatedAt'
   | 'skills___meta___publishedAt'
@@ -6296,6 +6661,7 @@ export type DatoCmsSkillEdge = {
 
 export type DatoCmsSkillFieldsEnum =
   | 'name'
+  | 'percentage'
   | 'meta___createdAt'
   | 'meta___updatedAt'
   | 'meta___publishedAt'
@@ -8000,6 +8366,369 @@ export type DatoCmsContactPageSortInput = {
   order?: InputMaybe<Array<InputMaybe<SortOrderEnum>>>;
 };
 
+export type DatoCmsAboutItemConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<DatoCmsAboutItemEdge>;
+  nodes: Array<DatoCmsAboutItem>;
+  pageInfo: PageInfo;
+  distinct: Array<Scalars['String']>;
+  max?: Maybe<Scalars['Float']>;
+  min?: Maybe<Scalars['Float']>;
+  sum?: Maybe<Scalars['Float']>;
+  group: Array<DatoCmsAboutItemGroupConnection>;
+};
+
+
+export type DatoCmsAboutItemConnectionDistinctArgs = {
+  field: DatoCmsAboutItemFieldsEnum;
+};
+
+
+export type DatoCmsAboutItemConnectionMaxArgs = {
+  field: DatoCmsAboutItemFieldsEnum;
+};
+
+
+export type DatoCmsAboutItemConnectionMinArgs = {
+  field: DatoCmsAboutItemFieldsEnum;
+};
+
+
+export type DatoCmsAboutItemConnectionSumArgs = {
+  field: DatoCmsAboutItemFieldsEnum;
+};
+
+
+export type DatoCmsAboutItemConnectionGroupArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  field: DatoCmsAboutItemFieldsEnum;
+};
+
+export type DatoCmsAboutItemEdge = {
+  next?: Maybe<DatoCmsAboutItem>;
+  node: DatoCmsAboutItem;
+  previous?: Maybe<DatoCmsAboutItem>;
+};
+
+export type DatoCmsAboutItemFieldsEnum =
+  | 'title'
+  | 'subtitle'
+  | 'icon___size'
+  | 'icon___width'
+  | 'icon___height'
+  | 'icon___path'
+  | 'icon___format'
+  | 'icon___isImage'
+  | 'icon___notes'
+  | 'icon___author'
+  | 'icon___copyright'
+  | 'icon___tags'
+  | 'icon___smartTags'
+  | 'icon___filename'
+  | 'icon___basename'
+  | 'icon___exifInfo'
+  | 'icon___mimeType'
+  | 'icon___colors'
+  | 'icon___colors___red'
+  | 'icon___colors___green'
+  | 'icon___colors___blue'
+  | 'icon___colors___alpha'
+  | 'icon___colors___rgb'
+  | 'icon___colors___hex'
+  | 'icon___blurhash'
+  | 'icon___originalId'
+  | 'icon___url'
+  | 'icon___createdAt'
+  | 'icon___video___muxPlaybackId'
+  | 'icon___video___frameRate'
+  | 'icon___video___duration'
+  | 'icon___video___streamingUrl'
+  | 'icon___video___thumbnailUrl'
+  | 'icon___video___mp4Url'
+  | 'icon___fluid___base64'
+  | 'icon___fluid___tracedSVG'
+  | 'icon___fluid___aspectRatio'
+  | 'icon___fluid___width'
+  | 'icon___fluid___height'
+  | 'icon___fluid___src'
+  | 'icon___fluid___srcSet'
+  | 'icon___fluid___sizes'
+  | 'icon___sizes___base64'
+  | 'icon___sizes___tracedSVG'
+  | 'icon___sizes___aspectRatio'
+  | 'icon___sizes___width'
+  | 'icon___sizes___height'
+  | 'icon___sizes___src'
+  | 'icon___sizes___srcSet'
+  | 'icon___sizes___sizes'
+  | 'icon___fixed___base64'
+  | 'icon___fixed___tracedSVG'
+  | 'icon___fixed___aspectRatio'
+  | 'icon___fixed___width'
+  | 'icon___fixed___height'
+  | 'icon___fixed___src'
+  | 'icon___fixed___srcSet'
+  | 'icon___fixed___sizes'
+  | 'icon___resolutions___base64'
+  | 'icon___resolutions___tracedSVG'
+  | 'icon___resolutions___aspectRatio'
+  | 'icon___resolutions___width'
+  | 'icon___resolutions___height'
+  | 'icon___resolutions___src'
+  | 'icon___resolutions___srcSet'
+  | 'icon___resolutions___sizes'
+  | 'icon___gatsbyImageData'
+  | 'icon___alt'
+  | 'icon___title'
+  | 'icon___customData'
+  | 'icon___focalPoint___x'
+  | 'icon___focalPoint___y'
+  | 'meta___createdAt'
+  | 'meta___updatedAt'
+  | 'meta___publishedAt'
+  | 'meta___firstPublishedAt'
+  | 'meta___isValid'
+  | 'meta___status'
+  | 'originalId'
+  | 'locale'
+  | 'seoMetaTags___tags'
+  | 'seoMetaTags___id'
+  | 'seoMetaTags___parent___id'
+  | 'seoMetaTags___parent___parent___id'
+  | 'seoMetaTags___parent___parent___children'
+  | 'seoMetaTags___parent___children'
+  | 'seoMetaTags___parent___children___id'
+  | 'seoMetaTags___parent___children___children'
+  | 'seoMetaTags___parent___internal___content'
+  | 'seoMetaTags___parent___internal___contentDigest'
+  | 'seoMetaTags___parent___internal___description'
+  | 'seoMetaTags___parent___internal___fieldOwners'
+  | 'seoMetaTags___parent___internal___ignoreType'
+  | 'seoMetaTags___parent___internal___mediaType'
+  | 'seoMetaTags___parent___internal___owner'
+  | 'seoMetaTags___parent___internal___type'
+  | 'seoMetaTags___children'
+  | 'seoMetaTags___children___id'
+  | 'seoMetaTags___children___parent___id'
+  | 'seoMetaTags___children___parent___children'
+  | 'seoMetaTags___children___children'
+  | 'seoMetaTags___children___children___id'
+  | 'seoMetaTags___children___children___children'
+  | 'seoMetaTags___children___internal___content'
+  | 'seoMetaTags___children___internal___contentDigest'
+  | 'seoMetaTags___children___internal___description'
+  | 'seoMetaTags___children___internal___fieldOwners'
+  | 'seoMetaTags___children___internal___ignoreType'
+  | 'seoMetaTags___children___internal___mediaType'
+  | 'seoMetaTags___children___internal___owner'
+  | 'seoMetaTags___children___internal___type'
+  | 'seoMetaTags___internal___content'
+  | 'seoMetaTags___internal___contentDigest'
+  | 'seoMetaTags___internal___description'
+  | 'seoMetaTags___internal___fieldOwners'
+  | 'seoMetaTags___internal___ignoreType'
+  | 'seoMetaTags___internal___mediaType'
+  | 'seoMetaTags___internal___owner'
+  | 'seoMetaTags___internal___type'
+  | 'model___name'
+  | 'model___singleton'
+  | 'model___sortable'
+  | 'model___apiKey'
+  | 'model___orderingDirection'
+  | 'model___tree'
+  | 'model___modularBlock'
+  | 'model___draftModeActive'
+  | 'model___allLocalesRequired'
+  | 'model___collectionAppeareance'
+  | 'model___hasSingletonItem'
+  | 'model___originalId'
+  | 'model___fields___tags'
+  | 'model___fields___id'
+  | 'model___fields___parent___id'
+  | 'model___fields___parent___children'
+  | 'model___fields___children'
+  | 'model___fields___children___id'
+  | 'model___fields___children___children'
+  | 'model___fields___internal___content'
+  | 'model___fields___internal___contentDigest'
+  | 'model___fields___internal___description'
+  | 'model___fields___internal___fieldOwners'
+  | 'model___fields___internal___ignoreType'
+  | 'model___fields___internal___mediaType'
+  | 'model___fields___internal___owner'
+  | 'model___fields___internal___type'
+  | 'model___id'
+  | 'model___parent___id'
+  | 'model___parent___parent___id'
+  | 'model___parent___parent___children'
+  | 'model___parent___children'
+  | 'model___parent___children___id'
+  | 'model___parent___children___children'
+  | 'model___parent___internal___content'
+  | 'model___parent___internal___contentDigest'
+  | 'model___parent___internal___description'
+  | 'model___parent___internal___fieldOwners'
+  | 'model___parent___internal___ignoreType'
+  | 'model___parent___internal___mediaType'
+  | 'model___parent___internal___owner'
+  | 'model___parent___internal___type'
+  | 'model___children'
+  | 'model___children___id'
+  | 'model___children___parent___id'
+  | 'model___children___parent___children'
+  | 'model___children___children'
+  | 'model___children___children___id'
+  | 'model___children___children___children'
+  | 'model___children___internal___content'
+  | 'model___children___internal___contentDigest'
+  | 'model___children___internal___description'
+  | 'model___children___internal___fieldOwners'
+  | 'model___children___internal___ignoreType'
+  | 'model___children___internal___mediaType'
+  | 'model___children___internal___owner'
+  | 'model___children___internal___type'
+  | 'model___internal___content'
+  | 'model___internal___contentDigest'
+  | 'model___internal___description'
+  | 'model___internal___fieldOwners'
+  | 'model___internal___ignoreType'
+  | 'model___internal___mediaType'
+  | 'model___internal___owner'
+  | 'model___internal___type'
+  | 'id'
+  | 'parent___id'
+  | 'parent___parent___id'
+  | 'parent___parent___parent___id'
+  | 'parent___parent___parent___children'
+  | 'parent___parent___children'
+  | 'parent___parent___children___id'
+  | 'parent___parent___children___children'
+  | 'parent___parent___internal___content'
+  | 'parent___parent___internal___contentDigest'
+  | 'parent___parent___internal___description'
+  | 'parent___parent___internal___fieldOwners'
+  | 'parent___parent___internal___ignoreType'
+  | 'parent___parent___internal___mediaType'
+  | 'parent___parent___internal___owner'
+  | 'parent___parent___internal___type'
+  | 'parent___children'
+  | 'parent___children___id'
+  | 'parent___children___parent___id'
+  | 'parent___children___parent___children'
+  | 'parent___children___children'
+  | 'parent___children___children___id'
+  | 'parent___children___children___children'
+  | 'parent___children___internal___content'
+  | 'parent___children___internal___contentDigest'
+  | 'parent___children___internal___description'
+  | 'parent___children___internal___fieldOwners'
+  | 'parent___children___internal___ignoreType'
+  | 'parent___children___internal___mediaType'
+  | 'parent___children___internal___owner'
+  | 'parent___children___internal___type'
+  | 'parent___internal___content'
+  | 'parent___internal___contentDigest'
+  | 'parent___internal___description'
+  | 'parent___internal___fieldOwners'
+  | 'parent___internal___ignoreType'
+  | 'parent___internal___mediaType'
+  | 'parent___internal___owner'
+  | 'parent___internal___type'
+  | 'children'
+  | 'children___id'
+  | 'children___parent___id'
+  | 'children___parent___parent___id'
+  | 'children___parent___parent___children'
+  | 'children___parent___children'
+  | 'children___parent___children___id'
+  | 'children___parent___children___children'
+  | 'children___parent___internal___content'
+  | 'children___parent___internal___contentDigest'
+  | 'children___parent___internal___description'
+  | 'children___parent___internal___fieldOwners'
+  | 'children___parent___internal___ignoreType'
+  | 'children___parent___internal___mediaType'
+  | 'children___parent___internal___owner'
+  | 'children___parent___internal___type'
+  | 'children___children'
+  | 'children___children___id'
+  | 'children___children___parent___id'
+  | 'children___children___parent___children'
+  | 'children___children___children'
+  | 'children___children___children___id'
+  | 'children___children___children___children'
+  | 'children___children___internal___content'
+  | 'children___children___internal___contentDigest'
+  | 'children___children___internal___description'
+  | 'children___children___internal___fieldOwners'
+  | 'children___children___internal___ignoreType'
+  | 'children___children___internal___mediaType'
+  | 'children___children___internal___owner'
+  | 'children___children___internal___type'
+  | 'children___internal___content'
+  | 'children___internal___contentDigest'
+  | 'children___internal___description'
+  | 'children___internal___fieldOwners'
+  | 'children___internal___ignoreType'
+  | 'children___internal___mediaType'
+  | 'children___internal___owner'
+  | 'children___internal___type'
+  | 'internal___content'
+  | 'internal___contentDigest'
+  | 'internal___description'
+  | 'internal___fieldOwners'
+  | 'internal___ignoreType'
+  | 'internal___mediaType'
+  | 'internal___owner'
+  | 'internal___type';
+
+export type DatoCmsAboutItemGroupConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<DatoCmsAboutItemEdge>;
+  nodes: Array<DatoCmsAboutItem>;
+  pageInfo: PageInfo;
+  distinct: Array<Scalars['String']>;
+  max?: Maybe<Scalars['Float']>;
+  min?: Maybe<Scalars['Float']>;
+  sum?: Maybe<Scalars['Float']>;
+  group: Array<DatoCmsAboutItemGroupConnection>;
+  field: Scalars['String'];
+  fieldValue?: Maybe<Scalars['String']>;
+};
+
+
+export type DatoCmsAboutItemGroupConnectionDistinctArgs = {
+  field: DatoCmsAboutItemFieldsEnum;
+};
+
+
+export type DatoCmsAboutItemGroupConnectionMaxArgs = {
+  field: DatoCmsAboutItemFieldsEnum;
+};
+
+
+export type DatoCmsAboutItemGroupConnectionMinArgs = {
+  field: DatoCmsAboutItemFieldsEnum;
+};
+
+
+export type DatoCmsAboutItemGroupConnectionSumArgs = {
+  field: DatoCmsAboutItemFieldsEnum;
+};
+
+
+export type DatoCmsAboutItemGroupConnectionGroupArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  field: DatoCmsAboutItemFieldsEnum;
+};
+
+export type DatoCmsAboutItemSortInput = {
+  fields?: InputMaybe<Array<InputMaybe<DatoCmsAboutItemFieldsEnum>>>;
+  order?: InputMaybe<Array<InputMaybe<SortOrderEnum>>>;
+};
+
 export type DatoCmsAssetConnection = {
   totalCount: Scalars['Int'];
   edges: Array<DatoCmsAssetEdge>;
@@ -9388,7 +10117,9 @@ export type ImageSharpSortInput = {
   order?: InputMaybe<Array<InputMaybe<SortOrderEnum>>>;
 };
 
-export type AboutFieldsFragment = { aboutTitle?: string | null, seeResumeButtonTitle?: string | null, aboutParagraphOne?: string | null, aboutParagraphTwo?: string | null, aboutParagraphThree?: string | null, aboutImage?: { gatsbyImageData?: any | null, format?: string | null, alt?: string | null } | null };
+export type AboutComponentFieldsFragment = { aboutItems?: Array<{ title?: string | null, subtitle?: string | null, id: string, icon?: { format?: string | null, gatsbyImageData?: any | null, url?: string | null, alt?: string | null } | null } | null> | null };
+
+export type AboutFieldsFragment = { aboutTitle?: string | null, aboutDescription?: string | null, seeResumeButtonTitle?: string | null, aboutImage?: { gatsbyImageData?: any | null, format?: string | null, alt?: string | null } | null, aboutItems?: Array<{ title?: string | null, subtitle?: string | null, id: string, icon?: { format?: string | null, gatsbyImageData?: any | null, url?: string | null, alt?: string | null } | null } | null> | null };
 
 export type ProjectFieldsFragment = { title?: string | null, subtitle?: string | null, url?: string | null, backgroundImage?: { gatsbyImageData?: any | null, format?: string | null, alt?: string | null } | null };
 
@@ -9416,7 +10147,7 @@ export type HomeQueryVariables = Exact<{
 }>;
 
 
-export type HomeQuery = { datoCmsHomePage?: { coverTitleOne?: string | null, coverTitleThree?: string | null, coverTitleTwo?: string | null, projectsTitle?: string | null, aboutTitle?: string | null, seeResumeButtonTitle?: string | null, aboutParagraphOne?: string | null, aboutParagraphTwo?: string | null, aboutParagraphThree?: string | null, highlightedProject?: Array<{ title?: string | null, subtitle?: string | null, url?: string | null, backgroundImage?: { gatsbyImageData?: any | null, format?: string | null, alt?: string | null } | null } | null> | null, projects?: Array<{ title?: string | null, subtitle?: string | null, url?: string | null, backgroundImage?: { gatsbyImageData?: any | null, format?: string | null, alt?: string | null } | null } | null> | null, aboutImage?: { gatsbyImageData?: any | null, format?: string | null, alt?: string | null } | null } | null, datoCmsHeader?: { about?: string | null, contact?: string | null, projects?: string | null, skills?: string | null } | null, datoCmsFooter?: { resume?: string | null, contact?: string | null, projects?: string | null, socialMediaTitle?: string | null, linkedin?: string | null, linkedinUrl?: string | null } | null };
+export type HomeQuery = { datoCmsHomePage?: { coverTitleOne?: string | null, coverTitleThree?: string | null, coverTitleTwo?: string | null, coverSubtitle?: string | null, projectsTitle?: string | null, aboutTitle?: string | null, aboutDescription?: string | null, seeResumeButtonTitle?: string | null, highlightedProject?: Array<{ title?: string | null, subtitle?: string | null, url?: string | null, backgroundImage?: { gatsbyImageData?: any | null, format?: string | null, alt?: string | null } | null } | null> | null, projects?: Array<{ title?: string | null, subtitle?: string | null, url?: string | null, backgroundImage?: { gatsbyImageData?: any | null, format?: string | null, alt?: string | null } | null } | null> | null, aboutImage?: { gatsbyImageData?: any | null, format?: string | null, alt?: string | null } | null, aboutItems?: Array<{ title?: string | null, subtitle?: string | null, id: string, icon?: { format?: string | null, gatsbyImageData?: any | null, url?: string | null, alt?: string | null } | null } | null> | null } | null, datoCmsHeader?: { about?: string | null, contact?: string | null, projects?: string | null, skills?: string | null } | null, datoCmsFooter?: { resume?: string | null, contact?: string | null, projects?: string | null, socialMediaTitle?: string | null, linkedin?: string | null, linkedinUrl?: string | null } | null };
 
 export type ProjectsQueryVariables = Exact<{
   locale: Scalars['String'];

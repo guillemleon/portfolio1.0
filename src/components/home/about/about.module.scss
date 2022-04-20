@@ -2,171 +2,89 @@
 
 .container {
   width: 100vw;
-  min-height: 100vh;
-  background-color: white;
-  clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 30%);
+  height: fit-content;
+  background-color: $aboutBackgroundColor;
   display: flex;
   justify-content: center;
-  padding: 0 16px;
+  padding: 0 0 128px 0;
+  z-index: 702;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
 .content {
-  padding-top: 300px;
   width: $contentWidth;
   height: 100%;
   overflow: hidden;
-}
-
-.aboutInfo {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 120px;
 }
 
 .title {
-  font-size: 100px;
+  font-size: 60px;
+  margin: 0;
   font-family: "Raleway-extraBold";
-  color: $black;
-  margin: 0 0 32px 0;
+  color: white;
   text-transform: uppercase;
-  transform: translateY(700px);
-  transition: transform .5s ease-in-out;
 }
 
-.mainData {
+.underline {
+  width: 90px;
+  height: 2px;
+  background-color: white;
+  margin-bottom: 78px;
+}
+
+.aboutItemsGroup {
   width: 100%;
   height: fit-content;
   display: flex;
-  justify-content: space-between;
-  padding: 16px 0;
-  overflow: hidden;
+  align-items: flex-start;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .imageContainer {
-  width: 400px;
-  height: 100%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  width: 330px;
+  height: 330px;
   border-radius: 50%;
-  border: 5px solid $green;
-  box-shadow: 5px 5px 10px 0px rgba(0,0,0,.4);
-  transform: translateY(700px);
-  transition: transform .5s ease-in-out;
   overflow: hidden;
-}
-
-.textContainer {
-  flex: 1;
-  padding-left: 128px;
   display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  overflow: hidden;
+  object-fit: contain;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
 .image {
-  height: 400px;
-  width: 400px;
+  min-width: 100%;
+  min-height: 100%;
 }
 
-.text {
-  font-size: 20px;
-  margin-bottom: 32px;
-  text-align: justify;
-  transform: translateY(700px);
-  transition: transform .5s ease-in-out;
-}
-
-.buttonContainer {
-  width: 100%;
-  height: 50px;
+.descriptionContainer {
+  width: 450px;
+  height: fit-content;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  overflow: hidden;
-}
-
-.button {
-  border: 2px solid transparent;
-  width: 200px;
-  height: 100%;
-  background-color: $green;
-  font-size: 16px;
-  cursor: pointer;
-  transform: translateY(700px);
-  transition: transform .5s ease-in-out;
-  text-transform: uppercase;
-  display: flex;
   justify-content: center;
-  align-items: center;
+}
+
+.description {
+  font-family: "Raleway-light";
+  font-size: 18px;
+  color: white;
+  text-align: center;
+  margin: 44px 0 0 0;
+  padding: 0;
+}
+
+.link {
   text-decoration: none;
-  color: black;
+  color: $yellow;
+  font-family: "Raleway-light";
+  font-size: 18px;
+  white-space: pre;
 
-  &:hover {
-    border: 2px solid $green;
-    background-color: white;
-  }
-}
-
-@include tablet {
-  .container {
-    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 20%);
-  }
-  .content {
-    padding-top: 200px;
-  }
-  .title {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-  .mainData {
-    flex-direction: column;
-    align-items: center;
-  }
-  .imageContainer {
-    width: 300px;
-  }
-  .textContainer {
-    padding: 64px 32px;
-  }
-  .image {
-    height: 300px;
-    width: 300px;
-  }
-  .text {
-    font-size: 16px;
-  }
-  .buttonContainer {
-    justify-content: center;
-  }
-  .button {
-    font-size: 14px;
-  }
-}
-
-@include mobile {
-  .container {
-    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 10%);
-  }
-  .content {
-    padding-top: 150px;
-  }
-  .title {
-    font-size: 50px;
-  }
-  .textContainer {
-    padding: 64px 0px 16px 0;
-  }
-  .text {
-    font-size: 14px;
-  }
-  .imageContainer {
-    width: 200px;
-  }
-  .image {
-    height: 200px !important;
-    width: 200px !important;
-  }
 }

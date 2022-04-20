@@ -22,7 +22,7 @@ const IndexPage:React.FC<RenderProps> = ({ data, pageContext }) => {
         title: useRef(null),
         title2: useRef(null),
         title3: useRef(null),
-        button: useRef(null),
+        subtitle: useRef(null),
     }
 
     useEffect(() => {
@@ -39,15 +39,18 @@ const IndexPage:React.FC<RenderProps> = ({ data, pageContext }) => {
             }}
         >
             <div className={styles.container}>
-                <div className={styles.content}  ref={coverElements.content}>
+                <div className={styles.topBlock}  ref={coverElements.content}>
                     <h1 className={styles.title} ref={coverElements.title}>{data.datoCmsHomePage.coverTitleOne}</h1>
                     <h1 className={styles.title} ref={coverElements.title2}>
                         {data.datoCmsHomePage.coverTitleTwo}
                         <div className={styles.titleGreen} ref={coverElements.title3}>{' ' + data.datoCmsHomePage.coverTitleThree}</div>
                     </h1>
+                    <h4 className={styles.subtitle} ref={coverElements.subtitle}>{data.datoCmsHomePage.coverSubtitle}</h4>
                 </div>
-                <div className={styles.continueCircle} ref={coverElements.button} onClick={() => scrollToAbout()}>
-                    <ReactSVG className={styles.arrow} src={arrow} />
+                <div className={styles.bottomBlock}>
+                    <div className={styles.continueCircle} onClick={() => scrollToAbout()}>
+                        <ReactSVG className={styles.arrow} src={arrow} />
+                    </div>
                 </div>
             </div>
             <About data={data.datoCmsHomePage} />
@@ -67,7 +70,6 @@ const IndexPage:React.FC<RenderProps> = ({ data, pageContext }) => {
         for (const [key, value] of Object.entries(coverElements)) {
             if(value.current) {
                 setInterval(() => {
-                    value.current.style.transform = "translateY(0px)";
                     value.current.style.opacity = 1;
                 }, 200 * index)
                 index++;
@@ -93,6 +95,7 @@ export const pageQuery = graphql`
             coverTitleOne
             coverTitleThree
             coverTitleTwo
+            coverSubtitle
             ...ProjectsFields
             ...AboutFields
         }

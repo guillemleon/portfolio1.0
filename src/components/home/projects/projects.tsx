@@ -18,16 +18,7 @@ const Projects:React.FC<RenderProps> = ({data, lang}) => {
     return (
         <section id="projects" className={styles.container}>
             <div className={styles.content}>
-                <h1 className={styles.title}>{data.projectsTitle}</h1>
-                <div className={styles.underline} />
-                <div className={styles.highlightedProject}>
-                    <Project data={data.highlightedProject[0]} isHighlighted={true} />
-                </div>
-                <div className={styles.projects}>
-                    <Project data={data.projects[0]} color={"#0CF2B1"} />
-                    <Project data={data.projects[1]} color={"#AB05F2"} />
-                    <a href={lang.locale === lang.defaultLocale ? `/projects` : `/${lang.locale}/projects`} className={styles.seeAll}>SEE ALL</a>
-                </div>
+
             </div>
         </section>
     )
