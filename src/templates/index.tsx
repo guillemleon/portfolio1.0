@@ -1,7 +1,7 @@
 import * as React from "react"
 import Layout from "../components/layout/layout";
 import * as styles from './home.module.scss';
-import arrow from '../assets/vectors/arrow.svg'
+import arrow from '../assets/vectors/icons/arrowDown.svg'
 import {ReactSVG} from "react-svg";
 import {useEffect, useRef} from "react";
 import About from "../components/home/about/about";
@@ -54,7 +54,7 @@ const IndexPage:React.FC<RenderProps> = ({ data, pageContext }) => {
                 </div>
             </div>
             <About data={data.datoCmsHomePage} />
-            <Skills />
+            <Skills data={data.datoCmsHomePage} />
             <Projects
                 data={data.datoCmsHomePage}
                 lang={{
@@ -97,6 +97,7 @@ export const pageQuery = graphql`
             coverTitleTwo
             coverSubtitle
             ...ProjectsFields
+            ...SkillsFields
             ...AboutFields
         }
         datoCmsHeader(locale: { eq: $locale }) {

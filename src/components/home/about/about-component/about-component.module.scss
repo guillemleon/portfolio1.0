@@ -18,8 +18,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform .7s ease-in-out;
+  transition: all .7s ease-in-out;
   transform: rotateY(-90deg);
+  opacity: 0;
 }
 
 .title {
@@ -29,6 +30,8 @@
   text-transform: uppercase;
   text-align: center;
   margin: 16px 0;
+  transition: opacity .7s ease-in-out;
+  opacity: 0;
 }
 
 .subtitle {
@@ -38,6 +41,8 @@
   text-align: center;
   margin: 16px 0;
   padding: 0 32px;
+  transition: opacity .7s ease-in-out;
+  opacity: 0;
 }
 
 .icon {
@@ -45,4 +50,31 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@include tablet {
+  .container {
+    width: 100%;
+    height: 250px;
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    margin: 0;
+  }
+
+  .imageContainer {
+    width: 110px;
+    height: 110px;
+  }
+
+  .icon {
+    svg {
+      width: 55px;
+    }
+  }
 }

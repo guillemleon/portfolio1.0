@@ -2,18 +2,92 @@
 
 .container {
   width: 100vw;
-  min-height: 100vh;
+  height: fit-content;
   background-color: $skillsBackgroundColor;
   display: flex;
   justify-content: center;
-  padding: 0 16px;
-  z-index: 701;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  padding: 0 0 128px 0;
+  z-index: 702;
+  box-shadow: $shadow;
 }
 
 .content {
-  padding-top: 300px;
   width: $contentWidth;
   height: 100%;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 120px;
+}
+
+.title {
+  font-size: 60px;
+  margin: 0;
+  font-family: "Raleway-extraBold";
+  color: white;
+  text-transform: uppercase;
+}
+
+.underline {
+  width: 90px;
+  height: 2px;
+  background-color: white;
+  margin-bottom: 78px;
+}
+
+.selectors {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 450px;
+  height: 35px;
+  position: relative;
+}
+
+.skillTitle {
+  width: 150px;
+  height: 100%;
+  font-size: 20px;
+  color: white;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Raleway-black";
+  z-index: 2;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.input {
+  &:checked {
+    .slider {
+      left: 25%;
+    }
+  }
+}
+
+.slider {
+  position: absolute;
+  width: 150px;
+  height: 35px;
+  background-color: $yellow;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+  transition: left .5s ease-in-out;
+  box-shadow: $shadow;
+}
+
+.list {
+  width: 100%;
+  height: fit-content;
+  padding: 0;
+  margin: 48px 0 0 0;
 }

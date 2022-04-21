@@ -8,7 +8,7 @@
   justify-content: center;
   padding: 0 0 128px 0;
   z-index: 702;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  box-shadow: $shadow;
 }
 
 .content {
@@ -55,7 +55,10 @@
   align-items: center;
   justify-content: center;
   object-fit: contain;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  box-shadow: $shadow;
+  transition: all .7s ease-in-out;
+  transform: rotateY(-90deg);
+  opacity: 0;
 }
 
 .image {
@@ -69,6 +72,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all .7s ease-in-out;
+  opacity: 0;
 }
 
 .description {
@@ -87,4 +92,41 @@
   font-size: 18px;
   white-space: pre;
 
+}
+
+@include tablet {
+  .aboutItemsGroup {
+    display:grid;
+    grid-template-columns: auto auto;
+    grid-row: auto;
+    width: 60%;
+  }
+
+  .imageContainer {
+    width: 260px;
+    height: 260px;
+    margin-top: 40px;
+  }
+
+  .description {
+    font-size: 14px;
+  }
+
+  .link {
+    font-size: 14px;
+  }
+
+  .descriptionContainer {
+    width: 80%;
+  }
+}
+
+@include mobile {
+  .aboutItemsGroup {
+    width: 100%;
+  }
+
+  .descriptionContainer {
+    width: 90%;
+  }
 }

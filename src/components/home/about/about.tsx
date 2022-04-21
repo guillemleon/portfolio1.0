@@ -12,14 +12,20 @@ type RenderProps = {
 
 const About:React.FC<RenderProps> = ({data}) => {
 
+    const about = useRef(null);
+    const picture = useRef(null);
+    const description = useRef(null);
     const aboutCards = useRef(null);
 
     useEffect(() => {
         loadAnimation()
+        window && window.addEventListener('scroll', (e) => {
+            loadAnimation()
+        })
     }, [])
 
     return (
-        <section id="about" className={styles.container}>
+        <section ref={about} id="about" className={styles.container}>
             <div className={styles.content}>
                 <h1 className={styles.title}>{data.aboutTitle}</h1>
                 <div className={styles.underline} />
@@ -30,10 +36,10 @@ const About:React.FC<RenderProps> = ({data}) => {
                         )
                     })}
                 </div>
-                <div className={styles.imageContainer}>
+                <div ref={picture} className={styles.imageContainer}>
                     <img src={PictureProfile} className={styles.image} alt="Guillem"/>
                 </div>
-                <div className={styles.descriptionContainer}>
+                <div ref={description} className={styles.descriptionContainer}>
                     <p className={styles.description}>
                         {data.aboutDescription}
                         <a
@@ -49,11 +55,24 @@ const About:React.FC<RenderProps> = ({data}) => {
     )
 
     function loadAnimation() {
-        aboutCards.current.childNodes.forEach((item, index) => {
+        if(window.pageYOffset >= about.current.offsetTop - 300) {
+            aboutCards.current.childNodes.forEach((item, index) => {
+                setTimeout(() => {
+                    item.childNodes[0].style.transform = "rotateY(0deg)"
+                    item.childNodes[0].style.opacity = "1"
+                    item.childNodes[1].style.opacity = "1"
+                    item.childNodes[2].style.opacity = "1"
+                }, 200 * index / 2)
+            });
             setTimeout(() => {
-                item.childNodes[0].style.transform = "rotateY(0deg)"
-            }, 200 * index / 2)
-        })
+                picture.current.style.transform = "rotateY(0deg)"
+                picture.current.style.opacity = "1"
+            }, 200 * aboutCards.current.childNodes.length / 2);
+            setTimeout(() => {
+                description.current.style.opacity = "1"
+            }, 200 * (aboutCards.current.childNodes.length));
+        }
+
     }
 
 }
