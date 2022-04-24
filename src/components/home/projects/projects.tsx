@@ -61,11 +61,15 @@ const Projects:React.FC<RenderProps> = ({data, lang}) => {
 export const fragment = graphql`
     fragment ProjectsFields on DatoCmsHomePage {
         projectsTitle
-        highlightedProject {
-            ...ProjectFields
-        }
         projects {
-            ...ProjectFields
+            title
+            subtitle
+            url
+            backgroundImage {
+              gatsbyImageData(layout: FIXED)
+              format
+              alt
+            }
         }
     }
 `

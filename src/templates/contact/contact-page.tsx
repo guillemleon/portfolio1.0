@@ -94,7 +94,7 @@ const ContactPage:React.FC<RenderProps> = ({ data, pageContext }) => {
                     ) : (
                         <div className={styles.successMessageContainer}>
                             {!errorSending ? data.datoCmsContactPage.successMessage : data.datoCmsContactPage.errorMessage}
-                            <a className={styles.submit} href={"/"}>GO HOME</a>
+                            <a className={styles.submit} href={pageContext.locale === pageContext.defaultLocale ? "/" : "/es"}>GO HOME</a>
                         </div>
                     )}
                 </div>

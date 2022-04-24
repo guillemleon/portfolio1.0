@@ -31,7 +31,7 @@ const Header: React.FC<RenderProps> = ({ data, isContactPage = false, lang }) =>
             <section className={styles.content}>
                 {renderLogo()}
                 <div className={styles.separationLine} />
-                {!isTablet ? renderLinksDesktop() : renderBurgerIcon()}
+                {!isTablet ? (isContactPage ? renderLinksDesktopContact() : renderLinksDesktop()) : (isContactPage ? renderLinksDesktopContact() : renderBurgerIcon())}
                 {isTablet && menuOpen && (
                     <BurgerMenu isContactPage={isContactPage} />
                 )}
@@ -59,6 +59,18 @@ const Header: React.FC<RenderProps> = ({ data, isContactPage = false, lang }) =>
                         {data.contact}
                     </a>
                 </li>
+                <li className={styles.langContainer}>
+                    <a className={styles.lang} href={isContactPage ? "/contact" : "/"}>EN</a>
+                    <p className={styles.lang} style={{margin: "0 8px"}}>|</p>
+                    <a className={styles.lang} href={isContactPage ? "/es/contact" : "/es"}>ES</a>
+                </li>
+            </ul>
+        )
+    }
+
+    function renderLinksDesktopContact(): JSX.Element {
+        return (
+            <ul className={styles.linksList} style={{width: "auto"}}>
                 <li className={styles.langContainer}>
                     <a className={styles.lang} href={isContactPage ? "/contact" : "/"}>EN</a>
                     <p className={styles.lang} style={{margin: "0 8px"}}>|</p>
