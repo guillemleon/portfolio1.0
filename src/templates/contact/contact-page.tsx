@@ -15,6 +15,7 @@ type RenderProps = {
 const ContactPage:React.FC<RenderProps> = ({ data, pageContext }) => {
 
     const [emailSended, setEmailSended] = useState(false);
+    const [errorSending, setErrorSending] = useState(false);
     const [apiCallLoading, setApiCallLoading] = useState(false);
     const { register, handleSubmit, formState: { errors } } = useForm();
 
@@ -29,6 +30,7 @@ const ContactPage:React.FC<RenderProps> = ({ data, pageContext }) => {
             console.log(emailSended)
         }).catch(err => {
             console.log(`Error: ${err}`)
+            setErrorSending(true)
         }).finally(() => {
             setApiCallLoading(false)
         })
@@ -42,66 +44,57 @@ const ContactPage:React.FC<RenderProps> = ({ data, pageContext }) => {
                 defaultLocale: pageContext.defaultLocale,
                 locale: pageContext.locale
             }}
+            isContactPage={true}
         >
             <section className={styles.container}>
                 <div className={styles.content}>
                     <div className={styles.titleContainer}>
-                        <h1 className={styles.title}>CONTACT</h1>
+                        <h1 className={styles.title}>{data.datoCmsContactPage.contactTitle}</h1>
+                        <div className={styles.underline} />
                     </div>
-                    {!emailSended ? (
+                    {!emailSended && !errorSending ? (
                         <form action="" className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-                            <div className={styles.left}>
-                                <div className={styles.inputContainer}>
-                                    <input
-                                        className={styles.input}
-                                        type="text"
-                                        {...register("name", {required: true})}
-                                        placeholder={data.datoCmsContactPage.namePlaceholder}
-                                    />
-                                </div>
-                                <div className={styles.inputContainer}>
-                                    <input
-                                        className={styles.input}
-                                        type="text"
-                                        {...register("subject", {required: true})}
-                                        placeholder={data.datoCmsContactPage.subjectPlaceholder}
-                                    />
-                                </div>
-                                <div className={styles.inputContainer}>
-                                    <input
-                                        className={styles.input}
-                                        type="tel"
-                                        {...register("phone", {required: true})}
-                                        placeholder={data.datoCmsContactPage.phonePlaceholder}
-                                    />
-                                </div>
-                                <div className={styles.inputContainer}>
-                                    <input
-                                        className={styles.input}
-                                        type="email"
-                                        {...register("email", {required: true})}
-                                        placeholder={data.datoCmsContactPage.emailPlaceholder}
-                                    />
-                                </div>
-                            </div>
-                            <div className={styles.right}>
-                                <textarea
-                                    className={styles.textarea}
-                                    {...register("message", {required: true})}
-                                    placeholder={data.datoCmsContactPage.messagePlaceholder}
+                            <div className={styles.inputContainer}>
+                                <input
+                                    className={styles.input}
+                                    type="text"
+                                    {...register("name", {required: true})}
+                                    placeholder={data.datoCmsContactPage.namePlaceholder}
                                 />
-                                {apiCallLoading ? (
-                                    <div className={styles.submit}>
-                                        <div className={styles.spinner} />
-                                    </div>
-                                ) : (
-                                    <input className={styles.submit} type="submit" value={"SEND"} />
-                                )}
                             </div>
+                            <div className={styles.inputContainer}>
+                                <input
+                                    className={styles.input}
+                                    type="text"
+                                    {...register("subject", {required: true})}
+                                    placeholder={data.datoCmsContactPage.subjectPlaceholder}
+                                />
+                            </div>
+                            <div className={styles.inputContainer}>
+                                <input
+                                    className={styles.input}
+                                    type="email"
+                                    {...register("email", {required: true})}
+                                    placeholder={data.datoCmsContactPage.emailPlaceholder}
+                                />
+                            </div>
+                            <textarea
+                                className={styles.textarea}
+                                {...register("message", {required: true})}
+                                placeholder={data.datoCmsContactPage.messagePlaceholder}
+                            />
+                            {apiCallLoading ? (
+                                <div className={styles.submit}>
+                                    <div className={styles.spinner} />
+                                </div>
+                            ) : (
+                                <input className={styles.submit} type="submit" value={data.datoCmsContactPage.submitButtonTitle} />
+                            )}
                         </form>
                     ) : (
                         <div className={styles.successMessageContainer}>
-                            The EMAIL WAS SENDED SUCCESFULLY
+                            {!errorSending ? data.datoCmsContactPage.successMessage : data.datoCmsContactPage.errorMessage}
+                            <a className={styles.submit} href={"/"}>GO HOME</a>
                         </div>
                     )}
                 </div>
@@ -116,10 +109,13 @@ export const fragment = graphql`
     fragment ContactPageFields on DatoCmsContactPage {
         namePlaceholder
         subjectPlaceholder
-        phonePlaceholder
         emailPlaceholder
         messagePlaceholder
         submitButtonTitle
+        contactTitle
+        goBackTitle
+        successMessage
+        errorMessage
     }
 `
 

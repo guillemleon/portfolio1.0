@@ -6,6 +6,7 @@ import Footer from "./footer/footer";
 
 type RenderProps = {
     header: HeaderFieldsFragment,
+    isContactPage?: boolean,
     footer: any,
     lang?: {
         locale: string,
@@ -13,7 +14,7 @@ type RenderProps = {
     }
 }
 
-const Layout: React.FC<RenderProps> = ({ header, footer, children, lang }) => {
+const Layout: React.FC<RenderProps> = ({ header, isContactPage= false, footer, children, lang }) => {
     return (
         <div className={styles.globalContainer}>
             <Header
@@ -22,6 +23,7 @@ const Layout: React.FC<RenderProps> = ({ header, footer, children, lang }) => {
                     locale: lang.locale,
                     defaultLocale: lang.defaultLocale
                 }}
+                isContactPage={isContactPage}
             />
             <main id="main" className={styles.layoutContent}>
                 {children}

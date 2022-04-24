@@ -3,8 +3,8 @@
 .container {
   list-style: none;
   width: 100%;
-  height: 50px;
-  margin-bottom: 20px;
+  height: 35px;
+  margin-bottom: 30px;
   background-color: white;
   border: none;
   box-shadow: $shadow;
@@ -20,12 +20,13 @@
   background-color: $yellow;
   box-shadow: $yellow;
   color: $grayText;
-  font-size: 20px;
+  font-size: 16px;
   font-family: "Raleway-bold";
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 10;
+  text-align: center;
 }
 
 .progressBar {
@@ -36,7 +37,7 @@
 }
 
 .progress {
-  background-color: $lightYellow;
+  background-color: #a48a26;
   height: 100%;
 }
 
@@ -44,10 +45,27 @@
   position: absolute;
   right: 20px;
   bottom: calc(50% - 10px);
-  font-size: 22px;
+  font-size: 16px;
   font-family: "Raleway-light";
   color: $grayText;
   z-index: 999;
   margin: 0;
   padding: 0;
+}
+
+@include mobile {
+  .container {
+    height: 30px;
+  }
+
+  .name {
+    width: 170px;
+    font-size: 13px;
+  }
+
+  .percentage {
+    right: 10px;
+    font-size: 13px;
+    bottom: calc(50% - 7px);
+  }
 }

@@ -1,6 +1,5 @@
 import * as React from "react"
 import * as styles from './skills.module.scss'
-import Skillss from "../../../config/skills";
 import {graphql} from "gatsby";
 import {SkillsFieldsFragment} from "../../../../graphql-types";
 import {useRef, useState} from "react";

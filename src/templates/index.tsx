@@ -38,7 +38,7 @@ const IndexPage:React.FC<RenderProps> = ({ data, pageContext }) => {
                 locale: pageContext.locale
             }}
         >
-            <div className={styles.container}>
+            <div id="home" className={styles.container}>
                 <div className={styles.topBlock}  ref={coverElements.content}>
                     <h1 className={styles.title} ref={coverElements.title}>{data.datoCmsHomePage.coverTitleOne}</h1>
                     <h1 className={styles.title} ref={coverElements.title2}>

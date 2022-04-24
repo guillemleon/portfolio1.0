@@ -5,7 +5,7 @@
   width: 100vw;
   height: 100vh;
   margin-top: 100px;
-  background-color: #0CF2B1;
+  background-color: $aboutBackgroundColor;
   transition: all .5s ease-in-out;
   align-self: flex-start;
   display: flex;
@@ -16,12 +16,14 @@
 
 .linksList {
   width: 90%;
+  height: 100%;
   padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   overflow: hidden;
+  position: relative;
 }
 
 .linkContainer {
@@ -34,13 +36,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 5px 5px 0 0 $lightPurple;
-  -moz-box-shadow: 5px 5px 0 0 $lightPurple;
-  -webkit-box-shadow: 5px 5px 0 0 $lightPurple;
-  -o-box-shadow: 5px 5px 0 0 $lightPurple;
+  box-shadow: 5px 5px 0 0 $yellow;
+  -moz-box-shadow: 5px 5px 0 0 $yellow;
+  -webkit-box-shadow: 5px 5px 0 0 $yellow;
+  -o-box-shadow: 5px 5px 0 0 $yellow;
   clip-path: polygon(100% 0%, 200% 100%, 5% 120%, 5% 10%);
-  transform: translateY(500px);
-  transition: transform .5s ease-in-out;
+  transform: translateY(300px);
+  opacity: 0;
+  transition: all .5s ease-in-out;
 
   &:hover {
     background-color: white;
@@ -55,4 +58,24 @@
   text-decoration: none;
   font-size: 21px;
   font-family: "Raleway-semiBold";
+}
+
+.langContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: fit-content;
+  position: absolute;
+  left: calc(50% - 55px);
+  bottom: 20%;
+}
+
+.lang {
+  text-decoration: none;
+  color: white;
+  margin: 8px;
+  padding: 0;
+  font-family: "Raleway-light";
+  font-size: 21px;
+  white-space: pre;
 }

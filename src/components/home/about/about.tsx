@@ -44,7 +44,8 @@ const About:React.FC<RenderProps> = ({data}) => {
                         {data.aboutDescription}
                         <a
                             className={styles.link}
-                            href="http://localhost:3000/cv/guillem-leon-cv.pdf"
+                            href="http://localhost:3000/cv/guillem_leon_cv.pdf"
+                            target={"_blank"}
                         >
                             {" " + data.seeResumeButtonTitle}
                         </a>

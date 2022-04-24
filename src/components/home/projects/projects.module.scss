@@ -2,18 +2,124 @@
 
 .container {
   width: 100vw;
-  min-height: 100vh;
+  height: fit-content;
   background-color: $projectsBackgroundColor;
   display: flex;
   justify-content: center;
-  padding: 0 16px;
-  z-index: 700;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  padding: 0 0 128px 0;
+  z-index: 702;
+  box-shadow: $shadow;
 }
 
 .content {
-  padding-top: 300px;
   width: $contentWidth;
   height: 100%;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 120px;
+}
+
+.title {
+  font-size: 60px;
+  margin: 0;
+  font-family: "Raleway-extraBold";
+  color: white;
+  text-transform: uppercase;
+}
+
+.underline {
+  width: 90px;
+  height: 2px;
+  background-color: white;
+  margin-bottom: 78px;
+}
+
+.list {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.project {
+  height: 380px;
+  width: 380px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  object-fit: cover;
+  position: relative;
+  opacity: 0;
+  transition: opacity .7s ease-in-out;
+}
+
+.image {
+  min-width: 100% !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0);
+  transition: background-color .3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-decoration: none;
+
+  &:hover {
+    background-color: rgba(0,0,0,.5);
+
+    .projectTitle {
+      opacity: 1;
+    }
+  }
+}
+
+.projectTitle {
+  font-size: 24px;
+  font-family: "Raleway-black";
+  text-transform: uppercase;
+  text-align: center;
+  color: white;
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@media screen and (max-width: 1140px){
+  .list {
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .project {
+    width: 50vw;
+    height: 50vw;
+  }
+}
+
+@include mobile {
+  .project {
+    width: 100vw;
+    height: 100vw;
+  }
 }

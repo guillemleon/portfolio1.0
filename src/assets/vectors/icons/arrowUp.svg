@@ -5,7 +5,7 @@
     </clipPath>
   </defs>
   <g id="Componente_1_1" data-name="Componente 1 – 1" clip-path="url(#clip-path)">
-    <path id="Polígono_1" data-name="Polígono 1" d="M15.5,0,31,27H0Z" fill="#3a3a3a"/>
-    <path id="Polígono_2" data-name="Polígono 2" d="M15.5,0,31,27H0Z" transform="translate(0 15)" fill="#3a3a3a"/>
+    <path id="Polígono_1" data-name="Polígono 1" d="M15.5,0,31,27H0Z" fill="#ffffff"/>
+    <path id="Polígono_2" data-name="Polígono 2" d="M15.5,0,31,27H0Z" transform="translate(0 15)" fill="#ffffff"/>
   </g>
 </svg>

@@ -1067,6 +1067,7 @@ export type DatoCmsFooter = Node & {
   linkedin?: Maybe<Scalars['String']>;
   _allLinkedinLocales?: Maybe<Array<Maybe<DatoCmsAllLocalesForDatoCmsFooterLinkedin>>>;
   linkedinUrl?: Maybe<Scalars['String']>;
+  githubUrl?: Maybe<Scalars['String']>;
   meta?: Maybe<DatoCmsMetaField>;
   originalId?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
@@ -1078,17 +1079,17 @@ export type DatoCmsFooter = Node & {
   internal: Internal;
 };
 
+export type DatoCmsAllLocalesForDatoCmsContactPageContactTitle = {
+  locale?: Maybe<Scalars['String']>;
+  value?: Maybe<Scalars['String']>;
+};
+
 export type DatoCmsAllLocalesForDatoCmsContactPageNamePlaceholder = {
   locale?: Maybe<Scalars['String']>;
   value?: Maybe<Scalars['String']>;
 };
 
 export type DatoCmsAllLocalesForDatoCmsContactPageSubjectPlaceholder = {
-  locale?: Maybe<Scalars['String']>;
-  value?: Maybe<Scalars['String']>;
-};
-
-export type DatoCmsAllLocalesForDatoCmsContactPagePhonePlaceholder = {
   locale?: Maybe<Scalars['String']>;
   value?: Maybe<Scalars['String']>;
 };
@@ -1108,19 +1109,40 @@ export type DatoCmsAllLocalesForDatoCmsContactPageSubmitButtonTitle = {
   value?: Maybe<Scalars['String']>;
 };
 
+export type DatoCmsAllLocalesForDatoCmsContactPageSuccessMessage = {
+  locale?: Maybe<Scalars['String']>;
+  value?: Maybe<Scalars['String']>;
+};
+
+export type DatoCmsAllLocalesForDatoCmsContactPageErrorMessage = {
+  locale?: Maybe<Scalars['String']>;
+  value?: Maybe<Scalars['String']>;
+};
+
+export type DatoCmsAllLocalesForDatoCmsContactPageGoBackTitle = {
+  locale?: Maybe<Scalars['String']>;
+  value?: Maybe<Scalars['String']>;
+};
+
 export type DatoCmsContactPage = Node & {
+  contactTitle?: Maybe<Scalars['String']>;
+  _allContactTitleLocales?: Maybe<Array<Maybe<DatoCmsAllLocalesForDatoCmsContactPageContactTitle>>>;
   namePlaceholder?: Maybe<Scalars['String']>;
   _allNamePlaceholderLocales?: Maybe<Array<Maybe<DatoCmsAllLocalesForDatoCmsContactPageNamePlaceholder>>>;
   subjectPlaceholder?: Maybe<Scalars['String']>;
   _allSubjectPlaceholderLocales?: Maybe<Array<Maybe<DatoCmsAllLocalesForDatoCmsContactPageSubjectPlaceholder>>>;
-  phonePlaceholder?: Maybe<Scalars['String']>;
-  _allPhonePlaceholderLocales?: Maybe<Array<Maybe<DatoCmsAllLocalesForDatoCmsContactPagePhonePlaceholder>>>;
   emailPlaceholder?: Maybe<Scalars['String']>;
   _allEmailPlaceholderLocales?: Maybe<Array<Maybe<DatoCmsAllLocalesForDatoCmsContactPageEmailPlaceholder>>>;
   messagePlaceholder?: Maybe<Scalars['String']>;
   _allMessagePlaceholderLocales?: Maybe<Array<Maybe<DatoCmsAllLocalesForDatoCmsContactPageMessagePlaceholder>>>;
   submitButtonTitle?: Maybe<Scalars['String']>;
   _allSubmitButtonTitleLocales?: Maybe<Array<Maybe<DatoCmsAllLocalesForDatoCmsContactPageSubmitButtonTitle>>>;
+  successMessage?: Maybe<Scalars['String']>;
+  _allSuccessMessageLocales?: Maybe<Array<Maybe<DatoCmsAllLocalesForDatoCmsContactPageSuccessMessage>>>;
+  errorMessage?: Maybe<Scalars['String']>;
+  _allErrorMessageLocales?: Maybe<Array<Maybe<DatoCmsAllLocalesForDatoCmsContactPageErrorMessage>>>;
+  goBackTitle?: Maybe<Scalars['String']>;
+  _allGoBackTitleLocales?: Maybe<Array<Maybe<DatoCmsAllLocalesForDatoCmsContactPageGoBackTitle>>>;
   meta?: Maybe<DatoCmsMetaField>;
   originalId?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
@@ -2070,6 +2092,7 @@ export type QueryDatoCmsFooterArgs = {
   linkedin?: InputMaybe<StringQueryOperatorInput>;
   _allLinkedinLocales?: InputMaybe<DatoCmsAllLocalesForDatoCmsFooterLinkedinFilterListInput>;
   linkedinUrl?: InputMaybe<StringQueryOperatorInput>;
+  githubUrl?: InputMaybe<StringQueryOperatorInput>;
   meta?: InputMaybe<DatoCmsMetaFieldFilterInput>;
   originalId?: InputMaybe<StringQueryOperatorInput>;
   locale?: InputMaybe<StringQueryOperatorInput>;
@@ -2091,18 +2114,24 @@ export type QueryAllDatoCmsFooterArgs = {
 
 
 export type QueryDatoCmsContactPageArgs = {
+  contactTitle?: InputMaybe<StringQueryOperatorInput>;
+  _allContactTitleLocales?: InputMaybe<DatoCmsAllLocalesForDatoCmsContactPageContactTitleFilterListInput>;
   namePlaceholder?: InputMaybe<StringQueryOperatorInput>;
   _allNamePlaceholderLocales?: InputMaybe<DatoCmsAllLocalesForDatoCmsContactPageNamePlaceholderFilterListInput>;
   subjectPlaceholder?: InputMaybe<StringQueryOperatorInput>;
   _allSubjectPlaceholderLocales?: InputMaybe<DatoCmsAllLocalesForDatoCmsContactPageSubjectPlaceholderFilterListInput>;
-  phonePlaceholder?: InputMaybe<StringQueryOperatorInput>;
-  _allPhonePlaceholderLocales?: InputMaybe<DatoCmsAllLocalesForDatoCmsContactPagePhonePlaceholderFilterListInput>;
   emailPlaceholder?: InputMaybe<StringQueryOperatorInput>;
   _allEmailPlaceholderLocales?: InputMaybe<DatoCmsAllLocalesForDatoCmsContactPageEmailPlaceholderFilterListInput>;
   messagePlaceholder?: InputMaybe<StringQueryOperatorInput>;
   _allMessagePlaceholderLocales?: InputMaybe<DatoCmsAllLocalesForDatoCmsContactPageMessagePlaceholderFilterListInput>;
   submitButtonTitle?: InputMaybe<StringQueryOperatorInput>;
   _allSubmitButtonTitleLocales?: InputMaybe<DatoCmsAllLocalesForDatoCmsContactPageSubmitButtonTitleFilterListInput>;
+  successMessage?: InputMaybe<StringQueryOperatorInput>;
+  _allSuccessMessageLocales?: InputMaybe<DatoCmsAllLocalesForDatoCmsContactPageSuccessMessageFilterListInput>;
+  errorMessage?: InputMaybe<StringQueryOperatorInput>;
+  _allErrorMessageLocales?: InputMaybe<DatoCmsAllLocalesForDatoCmsContactPageErrorMessageFilterListInput>;
+  goBackTitle?: InputMaybe<StringQueryOperatorInput>;
+  _allGoBackTitleLocales?: InputMaybe<DatoCmsAllLocalesForDatoCmsContactPageGoBackTitleFilterListInput>;
   meta?: InputMaybe<DatoCmsMetaFieldFilterInput>;
   originalId?: InputMaybe<StringQueryOperatorInput>;
   locale?: InputMaybe<StringQueryOperatorInput>;
@@ -7705,6 +7734,7 @@ export type DatoCmsFooterFieldsEnum =
   | '_allLinkedinLocales___locale'
   | '_allLinkedinLocales___value'
   | 'linkedinUrl'
+  | 'githubUrl'
   | 'meta___createdAt'
   | 'meta___updatedAt'
   | 'meta___publishedAt'
@@ -7957,6 +7987,7 @@ export type DatoCmsFooterFilterInput = {
   linkedin?: InputMaybe<StringQueryOperatorInput>;
   _allLinkedinLocales?: InputMaybe<DatoCmsAllLocalesForDatoCmsFooterLinkedinFilterListInput>;
   linkedinUrl?: InputMaybe<StringQueryOperatorInput>;
+  githubUrl?: InputMaybe<StringQueryOperatorInput>;
   meta?: InputMaybe<DatoCmsMetaFieldFilterInput>;
   originalId?: InputMaybe<StringQueryOperatorInput>;
   locale?: InputMaybe<StringQueryOperatorInput>;
@@ -7973,6 +8004,15 @@ export type DatoCmsFooterSortInput = {
   order?: InputMaybe<Array<InputMaybe<SortOrderEnum>>>;
 };
 
+export type DatoCmsAllLocalesForDatoCmsContactPageContactTitleFilterListInput = {
+  elemMatch?: InputMaybe<DatoCmsAllLocalesForDatoCmsContactPageContactTitleFilterInput>;
+};
+
+export type DatoCmsAllLocalesForDatoCmsContactPageContactTitleFilterInput = {
+  locale?: InputMaybe<StringQueryOperatorInput>;
+  value?: InputMaybe<StringQueryOperatorInput>;
+};
+
 export type DatoCmsAllLocalesForDatoCmsContactPageNamePlaceholderFilterListInput = {
   elemMatch?: InputMaybe<DatoCmsAllLocalesForDatoCmsContactPageNamePlaceholderFilterInput>;
 };
@@ -7987,15 +8027,6 @@ export type DatoCmsAllLocalesForDatoCmsContactPageSubjectPlaceholderFilterListIn
 };
 
 export type DatoCmsAllLocalesForDatoCmsContactPageSubjectPlaceholderFilterInput = {
-  locale?: InputMaybe<StringQueryOperatorInput>;
-  value?: InputMaybe<StringQueryOperatorInput>;
-};
-
-export type DatoCmsAllLocalesForDatoCmsContactPagePhonePlaceholderFilterListInput = {
-  elemMatch?: InputMaybe<DatoCmsAllLocalesForDatoCmsContactPagePhonePlaceholderFilterInput>;
-};
-
-export type DatoCmsAllLocalesForDatoCmsContactPagePhonePlaceholderFilterInput = {
   locale?: InputMaybe<StringQueryOperatorInput>;
   value?: InputMaybe<StringQueryOperatorInput>;
 };
@@ -8023,6 +8054,33 @@ export type DatoCmsAllLocalesForDatoCmsContactPageSubmitButtonTitleFilterListInp
 };
 
 export type DatoCmsAllLocalesForDatoCmsContactPageSubmitButtonTitleFilterInput = {
+  locale?: InputMaybe<StringQueryOperatorInput>;
+  value?: InputMaybe<StringQueryOperatorInput>;
+};
+
+export type DatoCmsAllLocalesForDatoCmsContactPageSuccessMessageFilterListInput = {
+  elemMatch?: InputMaybe<DatoCmsAllLocalesForDatoCmsContactPageSuccessMessageFilterInput>;
+};
+
+export type DatoCmsAllLocalesForDatoCmsContactPageSuccessMessageFilterInput = {
+  locale?: InputMaybe<StringQueryOperatorInput>;
+  value?: InputMaybe<StringQueryOperatorInput>;
+};
+
+export type DatoCmsAllLocalesForDatoCmsContactPageErrorMessageFilterListInput = {
+  elemMatch?: InputMaybe<DatoCmsAllLocalesForDatoCmsContactPageErrorMessageFilterInput>;
+};
+
+export type DatoCmsAllLocalesForDatoCmsContactPageErrorMessageFilterInput = {
+  locale?: InputMaybe<StringQueryOperatorInput>;
+  value?: InputMaybe<StringQueryOperatorInput>;
+};
+
+export type DatoCmsAllLocalesForDatoCmsContactPageGoBackTitleFilterListInput = {
+  elemMatch?: InputMaybe<DatoCmsAllLocalesForDatoCmsContactPageGoBackTitleFilterInput>;
+};
+
+export type DatoCmsAllLocalesForDatoCmsContactPageGoBackTitleFilterInput = {
   locale?: InputMaybe<StringQueryOperatorInput>;
   value?: InputMaybe<StringQueryOperatorInput>;
 };
@@ -8073,6 +8131,10 @@ export type DatoCmsContactPageEdge = {
 };
 
 export type DatoCmsContactPageFieldsEnum =
+  | 'contactTitle'
+  | '_allContactTitleLocales'
+  | '_allContactTitleLocales___locale'
+  | '_allContactTitleLocales___value'
   | 'namePlaceholder'
   | '_allNamePlaceholderLocales'
   | '_allNamePlaceholderLocales___locale'
@@ -8081,10 +8143,6 @@ export type DatoCmsContactPageFieldsEnum =
   | '_allSubjectPlaceholderLocales'
   | '_allSubjectPlaceholderLocales___locale'
   | '_allSubjectPlaceholderLocales___value'
-  | 'phonePlaceholder'
-  | '_allPhonePlaceholderLocales'
-  | '_allPhonePlaceholderLocales___locale'
-  | '_allPhonePlaceholderLocales___value'
   | 'emailPlaceholder'
   | '_allEmailPlaceholderLocales'
   | '_allEmailPlaceholderLocales___locale'
@@ -8097,6 +8155,18 @@ export type DatoCmsContactPageFieldsEnum =
   | '_allSubmitButtonTitleLocales'
   | '_allSubmitButtonTitleLocales___locale'
   | '_allSubmitButtonTitleLocales___value'
+  | 'successMessage'
+  | '_allSuccessMessageLocales'
+  | '_allSuccessMessageLocales___locale'
+  | '_allSuccessMessageLocales___value'
+  | 'errorMessage'
+  | '_allErrorMessageLocales'
+  | '_allErrorMessageLocales___locale'
+  | '_allErrorMessageLocales___value'
+  | 'goBackTitle'
+  | '_allGoBackTitleLocales'
+  | '_allGoBackTitleLocales___locale'
+  | '_allGoBackTitleLocales___value'
   | 'meta___createdAt'
   | 'meta___updatedAt'
   | 'meta___publishedAt'
@@ -8338,18 +8408,24 @@ export type DatoCmsContactPageGroupConnectionGroupArgs = {
 };
 
 export type DatoCmsContactPageFilterInput = {
+  contactTitle?: InputMaybe<StringQueryOperatorInput>;
+  _allContactTitleLocales?: InputMaybe<DatoCmsAllLocalesForDatoCmsContactPageContactTitleFilterListInput>;
   namePlaceholder?: InputMaybe<StringQueryOperatorInput>;
   _allNamePlaceholderLocales?: InputMaybe<DatoCmsAllLocalesForDatoCmsContactPageNamePlaceholderFilterListInput>;
   subjectPlaceholder?: InputMaybe<StringQueryOperatorInput>;
   _allSubjectPlaceholderLocales?: InputMaybe<DatoCmsAllLocalesForDatoCmsContactPageSubjectPlaceholderFilterListInput>;
-  phonePlaceholder?: InputMaybe<StringQueryOperatorInput>;
-  _allPhonePlaceholderLocales?: InputMaybe<DatoCmsAllLocalesForDatoCmsContactPagePhonePlaceholderFilterListInput>;
   emailPlaceholder?: InputMaybe<StringQueryOperatorInput>;
   _allEmailPlaceholderLocales?: InputMaybe<DatoCmsAllLocalesForDatoCmsContactPageEmailPlaceholderFilterListInput>;
   messagePlaceholder?: InputMaybe<StringQueryOperatorInput>;
   _allMessagePlaceholderLocales?: InputMaybe<DatoCmsAllLocalesForDatoCmsContactPageMessagePlaceholderFilterListInput>;
   submitButtonTitle?: InputMaybe<StringQueryOperatorInput>;
   _allSubmitButtonTitleLocales?: InputMaybe<DatoCmsAllLocalesForDatoCmsContactPageSubmitButtonTitleFilterListInput>;
+  successMessage?: InputMaybe<StringQueryOperatorInput>;
+  _allSuccessMessageLocales?: InputMaybe<DatoCmsAllLocalesForDatoCmsContactPageSuccessMessageFilterListInput>;
+  errorMessage?: InputMaybe<StringQueryOperatorInput>;
+  _allErrorMessageLocales?: InputMaybe<DatoCmsAllLocalesForDatoCmsContactPageErrorMessageFilterListInput>;
+  goBackTitle?: InputMaybe<StringQueryOperatorInput>;
+  _allGoBackTitleLocales?: InputMaybe<DatoCmsAllLocalesForDatoCmsContactPageGoBackTitleFilterListInput>;
   meta?: InputMaybe<DatoCmsMetaFieldFilterInput>;
   originalId?: InputMaybe<StringQueryOperatorInput>;
   locale?: InputMaybe<StringQueryOperatorInput>;
@@ -10127,7 +10203,7 @@ export type ProjectsFieldsFragment = { projectsTitle?: string | null, highlighte
 
 export type SkillsFieldsFragment = { skillsTitle?: string | null, skills?: Array<{ id: string, title?: string | null, skills?: Array<{ id: string, name?: string | null, percentage?: number | null } | null> | null } | null> | null };
 
-export type FooterFieldsFragment = { resume?: string | null, contact?: string | null, projects?: string | null, socialMediaTitle?: string | null, linkedin?: string | null, linkedinUrl?: string | null };
+export type FooterFieldsFragment = { resume?: string | null, contact?: string | null, projects?: string | null, socialMediaTitle?: string | null, linkedin?: string | null, linkedinUrl?: string | null, githubUrl?: string | null };
 
 export type HeaderFieldsFragment = { about?: string | null, contact?: string | null, projects?: string | null, skills?: string | null };
 
@@ -10135,28 +10211,28 @@ export type HelperDatoCmsFixedFragment = { aspectRatio?: number | null, base64?:
 
 export type HelperDatoCmsFluidFragment = { aspectRatio: number, base64?: string | null, height?: number | null, sizes: string, src: string, srcSet: string, tracedSVG?: string | null, width?: number | null };
 
-export type ContactPageFieldsFragment = { namePlaceholder?: string | null, subjectPlaceholder?: string | null, phonePlaceholder?: string | null, emailPlaceholder?: string | null, messagePlaceholder?: string | null, submitButtonTitle?: string | null };
+export type ContactPageFieldsFragment = { namePlaceholder?: string | null, subjectPlaceholder?: string | null, emailPlaceholder?: string | null, messagePlaceholder?: string | null, submitButtonTitle?: string | null, contactTitle?: string | null, goBackTitle?: string | null, successMessage?: string | null, errorMessage?: string | null };
 
 export type ContactQueryVariables = Exact<{
   locale: Scalars['String'];
 }>;
 
 
-export type ContactQuery = { datoCmsHeader?: { about?: string | null, contact?: string | null, projects?: string | null, skills?: string | null } | null, datoCmsFooter?: { resume?: string | null, contact?: string | null, projects?: string | null, socialMediaTitle?: string | null, linkedin?: string | null, linkedinUrl?: string | null } | null, datoCmsContactPage?: { namePlaceholder?: string | null, subjectPlaceholder?: string | null, phonePlaceholder?: string | null, emailPlaceholder?: string | null, messagePlaceholder?: string | null, submitButtonTitle?: string | null } | null };
+export type ContactQuery = { datoCmsHeader?: { about?: string | null, contact?: string | null, projects?: string | null, skills?: string | null } | null, datoCmsFooter?: { resume?: string | null, contact?: string | null, projects?: string | null, socialMediaTitle?: string | null, linkedin?: string | null, linkedinUrl?: string | null, githubUrl?: string | null } | null, datoCmsContactPage?: { namePlaceholder?: string | null, subjectPlaceholder?: string | null, emailPlaceholder?: string | null, messagePlaceholder?: string | null, submitButtonTitle?: string | null, contactTitle?: string | null, goBackTitle?: string | null, successMessage?: string | null, errorMessage?: string | null } | null };
 
 export type HomeQueryVariables = Exact<{
   locale: Scalars['String'];
 }>;
 
 
-export type HomeQuery = { datoCmsHomePage?: { coverTitleOne?: string | null, coverTitleThree?: string | null, coverTitleTwo?: string | null, coverSubtitle?: string | null, projectsTitle?: string | null, skillsTitle?: string | null, aboutTitle?: string | null, aboutDescription?: string | null, seeResumeButtonTitle?: string | null, highlightedProject?: Array<{ title?: string | null, subtitle?: string | null, url?: string | null, backgroundImage?: { gatsbyImageData?: any | null, format?: string | null, alt?: string | null } | null } | null> | null, projects?: Array<{ title?: string | null, subtitle?: string | null, url?: string | null, backgroundImage?: { gatsbyImageData?: any | null, format?: string | null, alt?: string | null } | null } | null> | null, skills?: Array<{ id: string, title?: string | null, skills?: Array<{ id: string, name?: string | null, percentage?: number | null } | null> | null } | null> | null, aboutImage?: { gatsbyImageData?: any | null, format?: string | null, alt?: string | null } | null, aboutItems?: Array<{ title?: string | null, subtitle?: string | null, id: string, icon?: { format?: string | null, gatsbyImageData?: any | null, url?: string | null, alt?: string | null } | null } | null> | null } | null, datoCmsHeader?: { about?: string | null, contact?: string | null, projects?: string | null, skills?: string | null } | null, datoCmsFooter?: { resume?: string | null, contact?: string | null, projects?: string | null, socialMediaTitle?: string | null, linkedin?: string | null, linkedinUrl?: string | null } | null };
+export type HomeQuery = { datoCmsHomePage?: { coverTitleOne?: string | null, coverTitleThree?: string | null, coverTitleTwo?: string | null, coverSubtitle?: string | null, projectsTitle?: string | null, skillsTitle?: string | null, aboutTitle?: string | null, aboutDescription?: string | null, seeResumeButtonTitle?: string | null, highlightedProject?: Array<{ title?: string | null, subtitle?: string | null, url?: string | null, backgroundImage?: { gatsbyImageData?: any | null, format?: string | null, alt?: string | null } | null } | null> | null, projects?: Array<{ title?: string | null, subtitle?: string | null, url?: string | null, backgroundImage?: { gatsbyImageData?: any | null, format?: string | null, alt?: string | null } | null } | null> | null, skills?: Array<{ id: string, title?: string | null, skills?: Array<{ id: string, name?: string | null, percentage?: number | null } | null> | null } | null> | null, aboutImage?: { gatsbyImageData?: any | null, format?: string | null, alt?: string | null } | null, aboutItems?: Array<{ title?: string | null, subtitle?: string | null, id: string, icon?: { format?: string | null, gatsbyImageData?: any | null, url?: string | null, alt?: string | null } | null } | null> | null } | null, datoCmsHeader?: { about?: string | null, contact?: string | null, projects?: string | null, skills?: string | null } | null, datoCmsFooter?: { resume?: string | null, contact?: string | null, projects?: string | null, socialMediaTitle?: string | null, linkedin?: string | null, linkedinUrl?: string | null, githubUrl?: string | null } | null };
 
 export type ProjectsQueryVariables = Exact<{
   locale: Scalars['String'];
 }>;
 
 
-export type ProjectsQuery = { datoCmsHeader?: { about?: string | null, contact?: string | null, projects?: string | null, skills?: string | null } | null, datoCmsFooter?: { resume?: string | null, contact?: string | null, projects?: string | null, socialMediaTitle?: string | null, linkedin?: string | null, linkedinUrl?: string | null } | null };
+export type ProjectsQuery = { datoCmsHeader?: { about?: string | null, contact?: string | null, projects?: string | null, skills?: string | null } | null, datoCmsFooter?: { resume?: string | null, contact?: string | null, projects?: string | null, socialMediaTitle?: string | null, linkedin?: string | null, linkedinUrl?: string | null, githubUrl?: string | null } | null };
 
 export type GatsbyDatoCmsResolutionsFragment = { base64?: string | null, width: number, height: number, src: string, srcSet: string };
 

@@ -86,8 +86,22 @@
 }
 
 .list {
-  width: 100%;
+  width: 90%;
   height: fit-content;
   padding: 0;
   margin: 48px 0 0 0;
+}
+
+@include mobile {
+  .selectors {
+    width: 330px;
+  }
+
+  .skillTitle {
+    width: 110px;
+  }
+  
+  .slider {
+    width: 110px;
+  }
 }
