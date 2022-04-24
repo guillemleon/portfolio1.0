@@ -1,109 +1,78 @@
 import * as React from "react"
 import * as styles from './skills.module.scss'
-import {useEffect, useState} from "react"
+import {graphql} from "gatsby";
+import {SkillsFieldsFragment} from "../../../../graphql-types";
+import {useRef, useState} from "react";
+import SkillPercentage from "./skill-percentage/skill-percentage";
 
-type RenderProps = {}
+type RenderProps = {
+    data: SkillsFieldsFragment
+}
 
-const About:React.FC<RenderProps> = (pageContext) => {
+const Skills:React.FC<RenderProps> = ({data}) => {
 
-    const skillsDataInitial = [
-        {
-            id: "skill-group-1",
-            group: "front",
-            selected: true,
-            style: styles.selector1,
-            selectedStyle: styles.selector1selected,
-            data: [
-                { name: "React", icon: "" },
-                { name: "React Native", icon: "" },
-                { name: "Redux", icon: "" },
-                { name: "Gatsby", icon: "" },
-                { name: "Angular", icon: "" },
-                { name: "Typescript", icon: "" },
-                { name: "Javascript", icon: "" },
-                { name: "SCSS", icon: "" },
-                { name: "CSS", icon: "" },
-                { name: "HTML", icon: "" },
-            ]
-        },
-        {
-            id: "skill-group-2",
-            group: "back",
-            selected: false,
-            style: styles.selector2,
-            selectedStyle: styles.selector2selected,
-            data: [
-                { name: "NodeJS", icon: "" },
-                { name: "Express", icon: "" },
-                { name: "Java", icon: "" },
-                { name: "Spring", icon: "" },
-                { name: "Django", icon: "" },
-                { name: "MySQL", icon: "" },
-                { name: "Postgres", icon: "" },
-                { name: "MongoDB", icon: "" },
-            ]
-        },{
-            id: "skill-group-3",
-            group: "tools",
-            selected: false,
-            style: styles.selector3,
-            selectedStyle: styles.selector3selected,
-            data: [
-                { name: "Azure DevOps", icon: "" },
-                { name: "Git", icon: "" },
-                { name: "DatoCMS", icon: "" },
-                { name: "Webstorm", icon: "" },
-                { name: "Visual Studio Code", icon: "" },
-                { name: "Linux", icon: "" },
-            ]
-        }
-    ]
-    const [skillsData, setSkillsData] = useState(skillsDataInitial)
-
-    useEffect(() => {
-        loadInitialAnimationState()
-    })
+    const getSkillsGroup = () => {
+        let group = [];
+        data.skills.map((item, index) => {
+            group.push({id: item.id, title: item.title, selected: index === 0 ? true : false});
+        })
+        return group;
+    }
+    const slider = useRef(null);
+    const [skillsGroup, setSkillsGroup] = useState(getSkillsGroup())
 
     return (
         <section id="skills" className={styles.container}>
             <div className={styles.content}>
-                <h1 className={styles.title}>MY SKILLS</h1>
-                <div className={styles.skillsData}>
-                    <div className={styles.selectorsContainer}>
-                        {skillsData.map((skillGroup) => {
-
-                            return (
-                                <button
-                                    id={skillGroup.id}
-                                    key={skillGroup.id}
-                                    className={skillGroup.selected ? skillGroup.selectedStyle : skillGroup.style}
-                                    onClick={() => selectSkillsGroup(skillGroup.id)}
-                                >
-                                    {skillGroup.group}
-                                </button>
-                            )
-
-                        })}
-                    </div>
-                    <div className={styles.skillsCollectionContainer}>asdasd</div>
-                </div>
+                <h1 className={styles.title}>{data.skillsTitle}</h1>
+                <div className={styles.underline} />
+                <nav className={styles.selectors}>
+                    {data.skills.map(skill => {
+                        return (
+                            <div key={skill.id} className={styles.skillTitle} onClick={(e) => {handleSelection(e, skill)}}>{skill.title}</div>
+                        )
+                    })}
+                    <div ref={slider} className={styles.slider} />
+                </nav>
+                <ul className={styles.list}>
+                    {data.skills.find(s => s.id === (skillsGroup.find(s => s.selected === true).id)).skills.map(skill => {
+                        return (
+                            <SkillPercentage data={skill} />
+                        )
+                    })}
+                </ul>
             </div>
         </section>
     )
 
-    function loadInitialAnimationState() {}
-
-    function selectSkillsGroup(id: string): void {
-        let skillsDataCopy = [...skillsData]
-
-        skillsDataCopy.map((item) => {
-            (item.id === id) ? item.selected = true : item.selected = false;
+    function handleSelection(e, skill) {
+        // Move slider
+        slider.current.style.left = e.currentTarget.offsetLeft + "px";
+        // Select group
+        let copyGroup = [...skillsGroup];
+        copyGroup.map(item => {
+            item.selected = false;
+            if (item.id === skill.id) item.selected = true;
         })
-
-        setSkillsData(skillsDataCopy);
+        setSkillsGroup(copyGroup);
     }
 
 }
 
+export const fragment = graphql`
+    fragment SkillsFields on DatoCmsHomePage {
+        skills {
+            id
+            title
+            skills {
+                id
+                name
+                percentage
+            }
+        }
+        skillsTitle
+    }
+`
 
-export default About
+
+export default Skills

@@ -1,85 +1,95 @@
 import * as React from "react"
 import * as styles from './about.module.scss'
-import {useEffect, useRef} from "react"
 import PictureProfile from "../../../assets/images/profile.jpg";
+import {graphql} from "gatsby";
+import {AboutFieldsFragment} from "../../../../graphql-types";
+import AboutComponent from "./about-component/about-component";
+import {useEffect, useRef} from "react";
 
-type RenderProps = {}
+type RenderProps = {
+    data: AboutFieldsFragment
+}
 
-const About:React.FC<RenderProps> = (pageContext) => {
+const About:React.FC<RenderProps> = ({data}) => {
 
-    const animatedElements = {
-        title: useRef(null),
-        image: useRef(null),
-        text: useRef(null),
-        text1: useRef(null),
-        text2: useRef(null),
-        button: useRef(null)
-    }
+    const about = useRef(null);
+    const picture = useRef(null);
+    const description = useRef(null);
+    const aboutCards = useRef(null);
 
     useEffect(() => {
-        if(typeof window !== undefined) {
-            if(about && window.scrollY >= about.offsetTop - 500) loadInitialAnimationState()
-        }
-        window.addEventListener('scroll', () => {
-            if(typeof window !== undefined) {
-                const about = typeof window !== "undefined" && document.getElementById("about");
-                if(about && window.scrollY >= about.offsetTop - 500) loadInitialAnimationState()
-            }
+        loadAnimation()
+        window && window.addEventListener('scroll', (e) => {
+            loadAnimation()
         })
-    })
+    }, [])
 
     return (
-        <section id="about" className={styles.container}>
+        <section ref={about} id="about" className={styles.container}>
             <div className={styles.content}>
-                <div className={styles.aboutInfo}>
-                    <h1 className={styles.title} ref={animatedElements.title}>
-                        ABOUT ME
-                    </h1>
-                    <div className={styles.mainData}>
-                        <div className={styles.imageContainer} ref={animatedElements.image}>
-                            <img className={styles.image} src={PictureProfile} alt=""/>
-                        </div>
-                        <div className={styles.textContainer}>
-                            <p className={styles.text} ref={animatedElements.text}>
-                                I'm currently working in Extia with the JAMSTACK technology.
-                                That includes ReactJS, gatsby and DatoCMS. That makes pages faster and is easier to
-                                manage the translations and add new content for the contributors.
-                            </p>
-                            <p className={styles.text} ref={animatedElements.text1}>
-                                My knowledge is focused mainly on React, React Native, Redux for the state management,
-                                gatsby, Typescript, some angular and relational databases like MySQL or Postgres.
-                                Also I'd love to learn new technologies like Vue. On the backend side my knowledge
-                                is academic and focused on NodeJS and Express, PHP and some django.
-                            </p>
-                            <p className={styles.text} ref={animatedElements.text2}>
-                                I'm quick learner and eager to improve my skills as a developer. I'm interested in
-                                constant learning as a frontend and backend developer.
-                            </p>
-                            <div className={styles.buttonContainer}>
-                                <button className={styles.button} ref={animatedElements.button}>
-                                    SEE RESUME
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                <h1 className={styles.title}>{data.aboutTitle}</h1>
+                <div className={styles.underline} />
+                <div ref={aboutCards} className={styles.aboutItemsGroup}>
+                    {data.aboutItems.map(item => {
+                        return (
+                            <AboutComponent key={item.id} data={item} />
+                        )
+                    })}
+                </div>
+                <div ref={picture} className={styles.imageContainer}>
+                    <img src={PictureProfile} className={styles.image} alt="Guillem"/>
+                </div>
+                <div ref={description} className={styles.descriptionContainer}>
+                    <p className={styles.description}>
+                        {data.aboutDescription}
+                        <a
+                            className={styles.link}
+                            href="http://localhost:3000/cv/guillem_leon_cv.pdf"
+                            target={"_blank"}
+                        >
+                            {" " + data.seeResumeButtonTitle}
+                        </a>
+                    </p>
                 </div>
             </div>
         </section>
     )
 
-    function loadInitialAnimationState() {
-        let index = 0;
-        for (const [key, value] of Object.entries(animatedElements)) {
-            if(value.current) {
-                setInterval(() => {
-                    value.current.style.transform = "translateY(0px)";
-                }, 200 * index)
-                index++;
-            }
+    function loadAnimation() {
+        if(window.pageYOffset >= about.current.offsetTop - 300) {
+            aboutCards.current.childNodes.forEach((item, index) => {
+                setTimeout(() => {
+                    item.childNodes[0].style.transform = "rotateY(0deg)"
+                    item.childNodes[0].style.opacity = "1"
+                    item.childNodes[1].style.opacity = "1"
+                    item.childNodes[2].style.opacity = "1"
+                }, 200 * index / 2)
+            });
+            setTimeout(() => {
+                picture.current.style.transform = "rotateY(0deg)"
+                picture.current.style.opacity = "1"
+            }, 200 * aboutCards.current.childNodes.length / 2);
+            setTimeout(() => {
+                description.current.style.opacity = "1"
+            }, 200 * (aboutCards.current.childNodes.length));
         }
+
     }
 
 }
 
+export const fragment = graphql`
+    fragment AboutFields on DatoCmsHomePage {
+        aboutTitle
+        aboutDescription
+        seeResumeButtonTitle
+        aboutImage {
+            gatsbyImageData(layout: FIXED)
+            format
+            alt
+        }
+        ...AboutComponentFields
+    }
+`
 
 export default About

@@ -1,62 +1,43 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "portail-tourisme-keolis-web",
+  "version": "1.0.0",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
-  "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
-  "dependencies": {
-    "@types/node-sass": "^4.11.2",
-    "@types/react": "^17.0.39",
-    "@types/react-dom": "^17.0.11",
-    "css-loader": "^6.6.0",
-    "css-modules-typescript-loader": "^4.0.1",
-    "file-loader": "^6.2.0",
-    "gatsby": "^4.6.2",
-    "gatsby-plugin-gatsby-cloud": "^4.6.0",
-    "gatsby-plugin-image": "^2.6.0",
-    "gatsby-plugin-manifest": "^4.6.0",
-    "gatsby-plugin-offline": "^5.6.0",
-    "gatsby-plugin-react-helmet": "^5.6.0",
-    "gatsby-plugin-sass": "^5.6.0",
-    "gatsby-plugin-sharp": "^4.6.0",
-    "gatsby-plugin-typescript": "^4.6.0",
-    "gatsby-source-filesystem": "^4.6.0",
-    "gatsby-transformer-sharp": "^4.6.0",
-    "node-sass": "^7.0.1",
-    "prop-types": "^15.8.0",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-helmet": "^6.1.0",
-    "react-svg": "^14.1.9",
-    "sass": "^1.49.7",
-    "sass-loader": "^12.4.0",
-    "style-loader": "^3.3.1",
-    "ts-loader": "^9.2.6",
-    "typescript": "^4.5.5",
-    "webpack": "^5.68.0",
-    "webpack-cli": "^4.9.2"
-  },
-  "devDependencies": {
-    "prettier": "^2.5.1"
-  },
+  "description": "Portail tourisme keolis web",
   "keywords": [
     "gatsby"
   ],
-  "license": "0BSD",
   "scripts": {
-    "build": "gatsby build",
     "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "gatsby develop",
+    "build": "gatsby build",
     "serve": "gatsby serve",
-    "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "clean": "gatsby clean"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+  "dependencies": {
+    "axios": "^0.26.1",
+    "gatsby": "^4.7.1",
+    "gatsby-plugin-google-analytics": "^4.7.0",
+    "gatsby-plugin-image": "^2.7.0",
+    "gatsby-plugin-manifest": "^4.7.0",
+    "gatsby-plugin-react-helmet": "^5.7.0",
+    "gatsby-plugin-sass": "^5.7.0",
+    "gatsby-plugin-sharp": "^4.7.0",
+    "gatsby-plugin-sitemap": "^5.7.0",
+    "gatsby-plugin-typescript": "^4.7.0",
+    "gatsby-source-datocms": "^3.0.15",
+    "gatsby-source-filesystem": "^4.7.0",
+    "gatsby-transformer-sharp": "^4.7.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-helmet": "^6.1.0",
+    "react-hook-form": "^7.30.0",
+    "react-svg": "^14.1.12",
+    "sass": "^1.49.7"
   },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+  "devDependencies": {
+    "@types/node": "^17.0.18",
+    "@types/react": "^17.0.39",
+    "@types/react-dom": "^17.0.11",
+    "gatsby-plugin-graphql-codegen": "^3.1.1"
   }
 }

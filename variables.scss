@@ -1,0 +1,51 @@
+/* Sizes */
+$mobileBreakpoint: 640px;
+$tabletBreakpoint: 960px;
+$contentWidth: 1140px;
+
+/* Colors */
+$black: #0D0D0D;
+$green: #0CF2B1;
+$darkPurple: #8303A6;
+$mediumPurple: #AB04D9;
+$lightPurple: #AB05F2;
+
+/* NEW COLORS */
+$black: #0D0D0D;
+$yellow: #e1b812;
+$lightYellow: #FFF700;
+$grayText: #504E4E;
+$footerBackgroundColor: #504E4E;
+$projectsBackgroundColor: #6A6A6A;
+$aboutBackgroundColor: #3A3A3A;
+$skillsBackgroundColor: #4E4E4E;
+$formInputBackgroundColor: rgba(255,255,255,.75);
+
+
+/* Font Sizes */
+
+$bigTitle: 100px;
+$title: 50px;
+$smallTitle: 35px;
+$superSmallTitle: 25px;
+$text: 25px;
+$smallText: 16px;
+$logoFooter: 200px;
+
+/* SHADOW */
+$shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+
+/* Mixins */
+
+@mixin mobile {
+  @media (max-width: #{$mobileBreakpoint}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: #{$tabletBreakpoint}) {
+    @content;
+  }
+}
+

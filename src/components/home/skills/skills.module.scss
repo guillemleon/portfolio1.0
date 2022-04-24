@@ -1,95 +1,107 @@
-@import "../../../variables.module.scss";
+@import "variables";
 
 .container {
   width: 100vw;
-  min-height: 100vh;
-  background-color: $black;
+  height: fit-content;
+  background-color: $skillsBackgroundColor;
   display: flex;
   justify-content: center;
-  padding: 128px 16px 0 16px;
+  padding: 0 0 128px 0;
+  z-index: 702;
+  box-shadow: $shadow;
 }
 
 .content {
   width: $contentWidth;
   height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 120px;
 }
 
 .title {
-  font-size: 100px;
+  font-size: 60px;
+  margin: 0;
   font-family: "Raleway-extraBold";
   color: white;
-  margin: 0 0 32px 0;
+  text-transform: uppercase;
 }
 
-.skillsData {
-  width: 100%;
-  height: 100%;
+.underline {
+  width: 90px;
+  height: 2px;
+  background-color: white;
+  margin-bottom: 78px;
+}
+
+.selectors {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 450px;
+  height: 35px;
+  position: relative;
 }
 
-.selectorsContainer {
-  flex: 1;
-  height: 100%;
-}
-
-.skillsCollectionContainer {
-  flex: 1;
-  height: 100%;
-  border: 1px solid red;
-}
-
-.selector {
+.skillTitle {
   width: 150px;
-  height: 150px;
-  margin: 15px 0 70px 15px;
-  border-radius: 50%;
+  height: 100%;
+  font-size: 20px;
+  color: white;
+  text-transform: uppercase;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  border: none;
-  outline: none;
-  text-transform: uppercase;
+  font-family: "Raleway-black";
+  z-index: 2;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
 
-  &:hover {
-    box-shadow: 0 0 0 10px $black, 0 0 0 15px white;
+.input {
+  &:checked {
+    .slider {
+      left: 25%;
+    }
   }
 }
 
-
-.selector1 {
-  @extend .selector;
-  background-color: $lightPurple;
-  color: white;
-  font-size: 24px;
-  font-family: "Raleway-semiBold";
+.slider {
+  position: absolute;
+  width: 150px;
+  height: 35px;
+  background-color: $yellow;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+  transition: left .5s ease-in-out;
+  box-shadow: $shadow;
 }
 
-.selector2 {
-  @extend .selector;
-  background-color: $green;
-  color: black;
-  font-size: 24px;
-  font-family: "Raleway-semiBold";
+.list {
+  width: 90%;
+  height: fit-content;
+  padding: 0;
+  margin: 48px 0 0 0;
 }
 
-.selector3 {
-  @extend .selector;
-  background-color: white;
-  color: black;
-  font-size: 24px;
-  font-family: "Raleway-semiBold";
-}
+@include mobile {
+  .selectors {
+    width: 330px;
+  }
 
-.selector1selected {
-  @extend .selector1;
-  box-shadow: 0 0 0 10px $black, 0 0 0 15px white;
-}
-.selector2selected {
-  @extend .selector2;
-  box-shadow: 0 0 0 10px $black, 0 0 0 15px white;
-}
-.selector3selected {
-  @extend .selector3;
-  box-shadow: 0 0 0 10px $black, 0 0 0 15px white;
+  .skillTitle {
+    width: 110px;
+  }
+  
+  .slider {
+    width: 110px;
+  }
 }
